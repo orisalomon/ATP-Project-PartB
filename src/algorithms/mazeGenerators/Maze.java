@@ -31,7 +31,7 @@ public class Maze {
     public String toString() {
         String ret = "";
         for (int i = 0; i<rows; i++){
-            ret = ret + "[";
+            ret = ret + "{ ";
             for (int j=0; j<cols; j++) {
                 if (startPosition.toString().equals(i + "," + j)) {
                     ret = ret + "S" + " ";
@@ -42,7 +42,7 @@ public class Maze {
 
                 }
             }
-            ret = ret + "]\n";
+            ret = ret + "}\n";
         }
 
         return ret;
