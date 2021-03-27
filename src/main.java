@@ -2,8 +2,7 @@ import algorithms.mazeGenerators.*;
 
 public class main {
     public static void main(String[] args) {
-        Maze m = new EmptyMazeGenerator().generate(3,4);
-        Position p = new Position(3,4);
-        System.out.println(p);
+        Maze m = new SimpleMazeGenerator().generate(5,7);
+        System.out.println(m);
     }
 }
