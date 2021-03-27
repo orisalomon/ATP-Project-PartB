@@ -27,6 +27,14 @@ public class Maze {
         maze = new int[rows][cols];
     }
 
+    public int getRows() {
+        return rows;
+    }
+
+    public int getCols() {
+        return cols;
+    }
+
     @Override
     public String toString() {
         String ret = "";
@@ -49,4 +57,7 @@ public class Maze {
     }
 
 
+    public void print() {
+        System.out.println(toString());
+    }
 }

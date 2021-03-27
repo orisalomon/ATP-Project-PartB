@@ -45,7 +45,7 @@ public class MyMazeGenerator extends AMazeGenerator {
             }
         }
 
-        maze.maze[goal.getRowIndex()][goal.getColumnIndex()-1] = 0; // waf wadf
+        maze.maze[goal.getRowIndex()][goal.getColumnIndex()-1] = 0;  // open route for ending point.
         return maze;
     }
 
