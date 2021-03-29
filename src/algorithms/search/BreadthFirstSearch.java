@@ -4,7 +4,7 @@ import java.util.*;
 
 public class BreadthFirstSearch extends ASearchingAlgorithm{
 
-
+    protected Queue<AState> queue = new LinkedList<>();
 
     @Override
     public String getName() {
@@ -15,7 +15,6 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
     @Override
     public Solution solve(ISearchable s) {
         Solution sol = new Solution();
-        Queue<AState> queue = new LinkedList<>();
         HashSet<AState> visited = new HashSet<>(); // for visited neighbors
 
         visited.add(s.getStartState());
@@ -26,6 +25,7 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
             numOfNodesEvaluated++;
 
             if (curr.equals(s.getGoalState())){
+                System.out.println("COST: " + curr.price);
                 Stack<AState> solutionStack = getSolPath(curr);
                 while (!solutionStack.isEmpty()){
                     sol.addState(solutionStack.pop());

@@ -1,11 +1,14 @@
 package algorithms.search;
 
+import algorithms.mazeGenerators.Maze;
 import algorithms.mazeGenerators.Position;
+
+import java.util.Comparator;
 
 public class MazeState extends AState{
 
-    public MazeState(Position currPos, MazeState father) {
-        super(currPos,father);
+    public MazeState(Position currPos, MazeState father, int price) {
+        super(currPos,father,price);
     }
 
     @Override
@@ -24,4 +27,6 @@ public class MazeState extends AState{
     public String toString() {
         return ((Position)currState).toString();
     }
+
+
 }

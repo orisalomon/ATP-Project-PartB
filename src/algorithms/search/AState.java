@@ -4,10 +4,12 @@ public abstract class AState {
 
     Object currState;
     AState parent;
+    int price;
 
-    public AState(Object currState, AState parent) {
+    public AState(Object currState, AState parent, int price) {
         this.currState = currState;
         this.parent = parent;
+        this.price = price;
     }
 
     @Override
@@ -18,4 +20,5 @@ public abstract class AState {
 
     @Override
     public abstract String toString();
+
 }
