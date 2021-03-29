@@ -80,5 +80,4 @@ public class SearchableMaze implements ISearchable {
 
         return posStates;
     }
-
 }

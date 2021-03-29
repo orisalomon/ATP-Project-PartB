@@ -1,6 +1,8 @@
 package algorithms.search;
 
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class DepthFirstSearch extends ASearchingAlgorithm{
@@ -17,30 +19,46 @@ public class DepthFirstSearch extends ASearchingAlgorithm{
     @Override
     public Solution solve(ISearchable s) {
         Solution sol = new Solution();
-        Stack<AState> stack = new Stack<>(); // for DFS algorithm
-        HashSet<AState> visited = new HashSet<>();  // for visited neighbors
-        stack.push(s.getStartState());
+        Stack<AState> stack = new Stack<>();
+        HashSet<AState> visited = new HashSet<>(); // for visited neighbors
+
+        //visited.add(s.getStartState());
+        stack.add(s.getStartState());
 
         while (!stack.isEmpty()){
             AState curr = stack.pop();
-            visited.add(curr);
             numOfNodesEvaluated++;
-            sol.addState(curr);
 
             if (curr.equals(s.getGoalState())){
-                sol.addState(curr);
+                Stack<AState> solutionStack = getSolPath(curr);
+                while (!solutionStack.isEmpty()){
+                    sol.addState(solutionStack.pop());
+                }
                 return sol;
             }
 
-            for (AState successor: s.getAllPossibleStates(curr))
-            {
-                if (!visited.contains(successor)){
-                    stack.push(successor);
 
+            for (AState successor: s.getAllPossibleStates(curr)) {
+
+                if (!visited.contains(successor)) {
+                    visited.add(successor);
+                    stack.add(successor);
                 }
             }
+
         }
         return sol;
+    }
 
+    private Stack<AState> getSolPath(AState curr) {
+
+        Stack<AState> solutionStack = new Stack<>();
+
+        while (curr != null){
+            solutionStack.push(curr);
+            curr = curr.parent;
+        }
+
+        return solutionStack;
     }
 }

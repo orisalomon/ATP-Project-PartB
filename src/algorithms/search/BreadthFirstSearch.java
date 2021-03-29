@@ -33,8 +33,9 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
                 return sol;
             }
 
+            ArrayList<AState> possibleStates = s.getAllPossibleStates(curr);
 
-            for (AState successor: s.getAllPossibleStates(curr)) {
+            for (AState successor: possibleStates ) {
 
                 if (!visited.contains(successor)) {
                     visited.add(successor);
