@@ -3,9 +3,11 @@ package algorithms.search;
 public abstract class AState {
 
     Object currState;
+    AState parent;
 
-    public AState(Object currState) {
+    public AState(Object currState, AState parent) {
         this.currState = currState;
+        this.parent = parent;
     }
 
     @Override

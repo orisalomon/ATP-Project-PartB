@@ -4,8 +4,8 @@ import algorithms.mazeGenerators.Position;
 
 public class MazeState extends AState{
 
-    public MazeState(Position currPos) {
-        super(currPos);
+    public MazeState(Position currPos, MazeState father) {
+        super(currPos,father);
     }
 
     @Override
@@ -15,7 +15,9 @@ public class MazeState extends AState{
 
     @Override
     public boolean equals(Object obj) {
-        return ((Position)this.currState).equals(obj);
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        return ((Position)this.currState).equals(((MazeState) obj).currState);
     }
 
     @Override

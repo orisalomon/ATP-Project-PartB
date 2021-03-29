@@ -1,6 +1,6 @@
 package algorithms.search;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Stack;
 
 public class DepthFirstSearch extends ASearchingAlgorithm{
@@ -18,9 +18,8 @@ public class DepthFirstSearch extends ASearchingAlgorithm{
     public Solution solve(ISearchable s) {
         Solution sol = new Solution();
         Stack<AState> stack = new Stack<>(); // for DFS algorithm
-        ArrayList<AState> visited = new ArrayList<>();  // for visited neighbors
+        HashSet<AState> visited = new HashSet<>();  // for visited neighbors
         stack.push(s.getStartState());
-
 
         while (!stack.isEmpty()){
             AState curr = stack.pop();
