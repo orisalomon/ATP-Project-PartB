@@ -33,7 +33,7 @@ public class DepthFirstSearch extends ASearchingAlgorithm{
                 return sol;
             }
 
-            for (AState successor: s.getAllSuccessors(curr))
+            for (AState successor: s.getAllPossibleStates(curr))
             {
                 if (!visited.contains(successor)){
                     stack.push(successor);

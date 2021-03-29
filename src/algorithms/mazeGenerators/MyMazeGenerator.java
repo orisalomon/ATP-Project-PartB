@@ -46,6 +46,7 @@ public class MyMazeGenerator extends AMazeGenerator {
         }
 
         maze.maze[goal.getRowIndex()][goal.getColumnIndex()-1] = 0;  // open route for ending point.
+        maze.maze[goal.getRowIndex()][goal.getColumnIndex()] = 0;  // ending point.
         return maze;
     }
 

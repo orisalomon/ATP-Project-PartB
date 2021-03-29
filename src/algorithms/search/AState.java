@@ -9,17 +9,11 @@ public abstract class AState {
     }
 
     @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
+    public abstract int hashCode();
 
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
-    }
+    public abstract boolean equals(Object obj);
 
     @Override
-    public String toString() {
-        return super.toString();
-    }
+    public abstract String toString();
 }

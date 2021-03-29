@@ -35,6 +35,10 @@ public class Maze {
         return cols;
     }
 
+    public int[][] getMaze() {
+        return maze;
+    }
+
     @Override
     public String toString() {
         String ret = "";

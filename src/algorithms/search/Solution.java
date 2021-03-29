@@ -17,4 +17,5 @@ public class Solution {
     public void addState(AState s){
         solution.add(s);
     }
+
 }

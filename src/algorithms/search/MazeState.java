@@ -4,10 +4,22 @@ import algorithms.mazeGenerators.Position;
 
 public class MazeState extends AState{
 
-    private Position source;
-    private Position target;
+    public MazeState(Position currPos) {
+        super(currPos);
+    }
 
-    public MazeState(Object currState) {
-        super(currState);
+    @Override
+    public int hashCode() {
+        return 0;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return ((Position)this.currState).equals(obj);
+    }
+
+    @Override
+    public String toString() {
+        return ((Position)currState).toString();
     }
 }
