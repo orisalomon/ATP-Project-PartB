@@ -32,7 +32,7 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
                 return sol;
             }
 
-            ArrayList<AState> possibleStates = s.getAllPossibleStates(curr); // get possible neighbors to move to
+            ArrayList<AState> possibleStates = s.getAllSuccessors(curr); // get possible neighbors to move to
 
             for (AState successor: possibleStates ) {
 

@@ -38,7 +38,7 @@ public class DepthFirstSearch extends ASearchingAlgorithm{
             }
 
 
-            for (AState successor: s.getAllPossibleStates(curr)) {
+            for (AState successor: s.getAllSuccessors(curr)) {
 
                 if (!visited.contains(successor)) {
                     visited.add(successor);

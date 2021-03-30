@@ -2,9 +2,9 @@ package algorithms.search;
 
 public abstract class AState {
 
-    Object currState;
-    AState parent;
-    int price;
+    protected Object currState;
+    protected AState parent;
+    protected int price;
 
     public AState(Object currState, AState parent, int price) {
         this.currState = currState;
