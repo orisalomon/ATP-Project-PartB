@@ -15,9 +15,9 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
     @Override
     public Solution solve(ISearchable s) {
         Solution sol = new Solution();
-        HashSet<AState> visited = new HashSet<>(); // for visited neighbors
+        HashSet<Object> visited = new HashSet<>(); // for visited neighbors  TODO: is it ok to assume string??
 
-        visited.add(s.getStartState()); // add the first node
+        visited.add(s.getStartState().currState); // add the first node
         queue.add(s.getStartState());
 
         while (!queue.isEmpty()){
@@ -36,11 +36,13 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
 
             for (AState successor: possibleStates ) {
 
-                if (!visited.contains(successor)) { // check if already visited
-                    visited.add(successor);
+                if (!visited.contains(successor.currState)) { // check if already visited
+                    visited.add(successor.currState);
                     queue.add(successor);
                 }
             }
+
+            possibleStates.clear();
 
         }
         return sol;

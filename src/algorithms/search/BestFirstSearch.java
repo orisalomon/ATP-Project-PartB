@@ -10,9 +10,8 @@ public class BestFirstSearch extends BreadthFirstSearch{
 
     @Override
     public String getName() {
-        return "BEST FS";
+        return "BEST-FS";
     }
-
 
 
 }

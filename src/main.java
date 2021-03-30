@@ -5,7 +5,7 @@ import algorithms.search.*;
 public class main {
     public static void main(String[] args) {
         long start1 = System.currentTimeMillis();
-        Maze newMaze = new MyMazeGenerator().generate(400,400);
+        Maze newMaze = new MyMazeGenerator().generate(1000,1000);
         long end1 = System.currentTimeMillis();
        System.out.println((end1-start1)/1000);
 //        DepthFirstSearch dfs = new DepthFirstSearch();

@@ -16,11 +16,17 @@ public class MazeState extends AState{
         return 0;
     }
 
+//    @Override
+//    public boolean equals(Object obj) {
+//        if (this == obj) return true;
+//        if (obj == null || getClass() != obj.getClass()) return false;
+//        return currState.equals(((MazeState) obj).currState);
+//    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        return ((Position)this.currState).equals(((MazeState) obj).currState);
+        return currState.equals(((MazeState) obj).currState);
     }
 
     @Override

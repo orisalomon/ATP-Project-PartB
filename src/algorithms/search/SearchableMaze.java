@@ -38,7 +38,7 @@ public class SearchableMaze implements ISearchable {
         int pCol = p.getColumnIndex();
         int[][] tMaze = maze.getMaze();
 
-        if (pCol-1 >= 0 && pRow-1 >= 0 && (tMaze[pRow-1][pCol] == 0 || tMaze[pRow][pCol-1] == 0)  && tMaze[pRow-1][pCol-1]== 0 ){
+        if (pCol-1 >= 0 && pRow-1 >= 0 && (tMaze[pRow-1][pCol] == 0 || tMaze[pRow][pCol-1] == 0)  && tMaze[pRow-1][pCol-1] == 0){
             posStates.add(new MazeState(new Position(pRow-1,pCol-1),mState,s.price+15));
         }
 
