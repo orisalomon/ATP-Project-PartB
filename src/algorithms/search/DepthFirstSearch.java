@@ -20,9 +20,9 @@ public class DepthFirstSearch extends ASearchingAlgorithm{
     public Solution solve(ISearchable s) {
         Solution sol = new Solution();
         Stack<AState> stack = new Stack<>();
-        HashSet<AState> visited = new HashSet<>(); // for visited neighbors
+        HashSet<Object> visited = new HashSet<>(); // for visited neighbors
 
-        visited.add(s.getStartState());
+        visited.add(s.getStartState().currState);
         stack.add(s.getStartState());
 
         while (!stack.isEmpty()){
@@ -40,8 +40,8 @@ public class DepthFirstSearch extends ASearchingAlgorithm{
 
             for (AState successor: s.getAllSuccessors(curr)) {
 
-                if (!visited.contains(successor)) {
-                    visited.add(successor);
+                if (!visited.contains(successor.currState)) {
+                    visited.add(successor.currState);
                     stack.add(successor);
                 }
             }
