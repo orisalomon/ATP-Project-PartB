@@ -11,8 +11,8 @@ public class MyMazeGenerator extends AMazeGenerator {
         Stack<Position> stack = new Stack<>();
         Random rand = new Random();
 
-        Position start = new Position(rand.nextInt(rows), 0);
-        Position goal = new Position(rand.nextInt(rows),cols-1);
+        Position start = new Position(rows/2, 0);
+        Position goal = new Position(rows/2,cols-1);
 
         Maze maze = new Maze(rows,cols,start,goal);
 
@@ -42,6 +42,7 @@ public class MyMazeGenerator extends AMazeGenerator {
 
                     stack.push(to_visit);
                 }
+                else{break;}
             }
         }
 

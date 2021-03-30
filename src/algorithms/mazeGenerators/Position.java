@@ -36,4 +36,13 @@ public class Position {
     public int hashCode() {
         return Objects.hash(row, col);
     }
+
+    public void setCol(int col) {
+        this.col = col;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
+    }
 }
+
