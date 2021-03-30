@@ -5,17 +5,17 @@ import algorithms.search.*;
 public class main {
     public static void main(String[] args) {
         long start1 = System.currentTimeMillis();
-        Maze newMaze = new PrimMazeGenerator().generate(1000,1000);
+        Maze newMaze = new MyMazeGenerator().generate(400,400);
         long end1 = System.currentTimeMillis();
        System.out.println((end1-start1)/1000);
-        //DepthFirstSearch dfs = new DepthFirstSearch();
-//        BreadthFirstSearch bfs = new BreadthFirstSearch();
+//        DepthFirstSearch dfs = new DepthFirstSearch();
+        BreadthFirstSearch bfs = new BreadthFirstSearch();
 //
 ////        BestFirstSearch best = new BestFirstSearch();
-//          SearchableMaze smaze = new SearchableMaze(newMaze);
-//        long start = System.currentTimeMillis();
-//        Solution sol1 = bfs.solve(smaze);
-//        long end = System.currentTimeMillis();
+         SearchableMaze smaze = new SearchableMaze(newMaze);
+        long start = System.currentTimeMillis();
+        Solution sol1 = bfs.solve(smaze);
+        long end = System.currentTimeMillis();
 
 //        System.out.println(newMaze);
 //        for (AState s : sol1.getSolutionPath()
@@ -23,9 +23,9 @@ public class main {
 //            System.out.println(s);
 //        }
 
-//        System.out.println("Number of nodes evaluated: " + bfs.getNumberOfNodesEvaluated());
-//        System.out.println("Number of Steps: "+ sol1.getSolutionPath().size());
-//        System.out.println("Time: "+ (end-start)/1000);
+        System.out.println("Number of nodes evaluated: " + bfs.getNumberOfNodesEvaluated());
+        System.out.println("Number of Steps: "+ sol1.getSolutionPath().size());
+        System.out.println("Time: "+ (end-start)/1000);
 
 //        System.out.println("BEST----------------");
 //        Solution sol2 = best.solve(smaze);

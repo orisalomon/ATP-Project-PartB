@@ -22,7 +22,7 @@ public class DepthFirstSearch extends ASearchingAlgorithm{
         Stack<AState> stack = new Stack<>();
         HashSet<AState> visited = new HashSet<>(); // for visited neighbors
 
-        //visited.add(s.getStartState());
+        visited.add(s.getStartState());
         stack.add(s.getStartState());
 
         while (!stack.isEmpty()){
