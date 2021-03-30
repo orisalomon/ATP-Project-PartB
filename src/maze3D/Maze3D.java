@@ -49,7 +49,7 @@ public class Maze3D {
 
     @Override
     public String toString() {
-        String ret = "{";
+        String ret = "{\n";
         for (int i = 0; i<depth; i++){
 
             for (int j=0; j<row; j++) {
@@ -57,9 +57,9 @@ public class Maze3D {
 
                 for (int k=0; k<col; k++){
 
-                    if (startPosition.toString().equals(i + "," + j)) {
+                    if (startPosition.toString().equals(i + "," + j+","+k)) {
                         ret = ret + "S" + " ";
-                    } else if (goalPosition.toString().equals(i + "," + j)) {
+                    } else if (goalPosition.toString().equals(i + "," + j+","+k)) {
                         ret = ret + "E" + " ";
                     } else {
                         ret = ret + maze[i][j][k] + " ";
@@ -68,7 +68,7 @@ public class Maze3D {
                 }
                 ret = ret + "}\n";
             }
-            ret = ret + "-".repeat(col*2+3);
+            if(i!=depth-1) {ret = ret +"-".repeat(col*2+3)+ "\n";}
 
         }
         ret = ret + "}";

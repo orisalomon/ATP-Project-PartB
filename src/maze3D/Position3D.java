@@ -1,7 +1,29 @@
 package maze3D;
 
+import algorithms.mazeGenerators.Position;
+
 public class Position3D {
-    public int getDepthIndex(){return 0;}
-    public int getRowIndex(){return 0;}
-    public int getColumnIndex(){return 0;}
+    private int row;
+    private int col;
+    private int depth;
+
+    public Position3D( int depth, int row, int col) {
+        this.row = row;
+        this.depth = depth;
+        this.col = col;
+    }
+
+    public int getDepthIndex(){return depth;}
+    public int getRowIndex(){return row;}
+    public int getColumnIndex(){return col;}
+
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Position3D position = (Position3D) o;
+        return row == position.row && col == position.col && position.depth==depth;
+    }
+    public String toString() {
+        return depth+","+row+","+col;
+    }
 }
