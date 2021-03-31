@@ -10,24 +10,27 @@ public class main3D {
 
     public static void main(String[] args) {
         long start1 = System.currentTimeMillis();
-        Maze3D maze = new MyMaze3DGenerator().generate(500,500,500);
+        Maze3D maze = new MyMaze3DGenerator().generate(4,4,4);
         long end1 = System.currentTimeMillis();
-        System.out.println((end1-start1)/1000);
+        System.out.println("Generation time: "+ (end1-start1)/1000);
 
 
-        BreadthFirstSearch bfs = new BreadthFirstSearch();
-//
+//        BreadthFirstSearch bfs = new BreadthFirstSearch();
+          DepthFirstSearch dfs = new DepthFirstSearch();
 //        BestFirstSearch best = new BestFirstSearch();
         SearchableMaze3D smaze = new SearchableMaze3D(maze);
-        long start = System.currentTimeMillis();
-        Solution sol1 = bfs.solve(smaze);
-        long end = System.currentTimeMillis();
-        System.out.println((end-start)/1000);
+        System.out.println(maze);
 
-        //System.out.println(maze);
-//        for (AState s : sol1.getSolutionPath()
-//        ) {
-//            System.out.println(s);
-//        }
+        long start = System.currentTimeMillis();
+        Solution sol1 = dfs.solve(smaze);
+        long end = System.currentTimeMillis();
+        System.out.println("Solving time: "+ (end-start)/1000);
+
+        System.out.println(maze);
+
+        for (AState s : sol1.getSolutionPath()
+        ) {
+            System.out.println(s);
+        }
     }
 }

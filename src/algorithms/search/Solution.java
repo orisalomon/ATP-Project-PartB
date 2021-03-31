@@ -1,6 +1,7 @@
 package algorithms.search;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Solution {
 
@@ -18,4 +19,14 @@ public class Solution {
         solution.add(s);
     }
 
+    /*
+    public void setPath(AState curr) {
+        while (curr != null){
+            solution.add(curr);
+            curr = curr.parent;
+        }
+
+        Collections.reverse(solution);
+    }
+    */
 }

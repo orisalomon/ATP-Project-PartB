@@ -15,9 +15,11 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
     @Override
     public Solution solve(ISearchable s) {
         Solution sol = new Solution();
-        HashSet<Object> visited = new HashSet<>(); // for visited neighbors  TODO: is it ok to assume string??
+        HashSet<String> visited = new HashSet<>(); // for visited neighbors  TODO: is it ok to assume Object??
 
-        visited.add(s.getStartState().currState); // add the first node
+        queue.clear();
+
+        visited.add(s.getStartState().currState.toString()); // add the first node
         queue.add(s.getStartState());
 
         while (!queue.isEmpty()){
@@ -25,19 +27,23 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
             numOfNodesEvaluated++;
 
             if (curr.equals(s.getGoalState())){ // if node is the goal node
+
                 Stack<AState> solutionStack = getSolPath(curr); // create path from end to start
                 while (!solutionStack.isEmpty()){ // add the path to solution from start to end
                     sol.addState(solutionStack.pop());
                 }
+                /*
+                sol.setPath(curr);
+                */
                 return sol;
             }
 
             ArrayList<AState> possibleStates = s.getAllSuccessors(curr); // get possible neighbors to move to
 
             for (AState successor: possibleStates ) {
-
-                if (!visited.contains(successor.currState)) { // check if already visited
-                    visited.add(successor.currState);
+                String successorString = successor.currState.toString();
+                if (!visited.contains(successorString)) { // check if already visited
+                    visited.add(successorString);
                     queue.add(successor);
                 }
             }
@@ -59,4 +65,6 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
 
         return solutionStack;
     }
+
+
 }
