@@ -27,10 +27,11 @@ public class DepthFirstSearch extends ASearchingAlgorithm{
             numOfNodesEvaluated++;
 
             if (curr.equals(s.getGoalState())){
-                Stack<AState> solutionStack = getSolPath(curr);
-                while (!solutionStack.isEmpty()){
-                    sol.addState(solutionStack.pop());
-                }
+//                Stack<AState> solutionStack = getSolPath(curr);
+//                while (!solutionStack.isEmpty()){
+//                    sol.addState(solutionStack.pop());
+//                }
+                sol.setPath(curr);
                 return sol;
             }
 
@@ -48,15 +49,15 @@ public class DepthFirstSearch extends ASearchingAlgorithm{
         return sol;
     }
 
-    private Stack<AState> getSolPath(AState curr) {
-
-        Stack<AState> solutionStack = new Stack<>();
-
-        while (curr != null){
-            solutionStack.push(curr);
-            curr = curr.parent;
-        }
-
-        return solutionStack;
-    }
+//    private Stack<AState> getSolPath(AState curr) {
+//
+//        Stack<AState> solutionStack = new Stack<>();
+//
+//        while (curr != null){
+//            solutionStack.push(curr);
+//            curr = curr.parent;
+//        }
+//
+//        return solutionStack;
+//    }
 }
