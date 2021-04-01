@@ -24,6 +24,6 @@ public class Position3D {
         return row == position.row && col == position.col && position.depth==depth;
     }
     public String toString() {
-        return depth+","+row+","+col;
+        return "{"+depth+","+row+","+col+"}";
     }
 }
