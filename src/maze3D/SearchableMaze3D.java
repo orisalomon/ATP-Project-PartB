@@ -30,7 +30,9 @@ public class SearchableMaze3D implements ISearchable {
     @Override
     public ArrayList<AState> getAllSuccessors(AState s) {
         Maze3DState mState = (Maze3DState) s;
+        Maze3DState newMState;
         Position3D p = mState.getPosition();
+        Position3D newP;
         ArrayList<AState> posStates = new ArrayList<>();
 
         int pDepth = p.getDepthIndex();
@@ -40,32 +42,44 @@ public class SearchableMaze3D implements ISearchable {
 
         if (pRow+1 < maze.getRows()){
             if(tMaze[pDepth][pRow+1][pCol] == 0){
-                posStates.add(new Maze3DState(new Position3D(pDepth,pRow+1,pCol),mState,mState.getPrice()+10));
+                newP=new Position3D(pDepth,pRow+1,pCol);
+                newMState = new Maze3DState(newP,mState,mState.getPrice()+10);
+                posStates.add(newMState);
             }
         }
         if (pRow-1 >= 0){
             if(tMaze[pDepth][pRow-1][pCol] == 0){
-                posStates.add(new Maze3DState(new Position3D(pDepth,pRow-1,pCol),mState,mState.getPrice()+10));
+                newP=new Position3D(pDepth,pRow-1,pCol);
+                newMState = new Maze3DState(newP,mState,mState.getPrice()+10);
+                posStates.add(newMState);
             }
         }
         if (pCol-1 >= 0){
             if(tMaze[pDepth][pRow][pCol-1] == 0){
-                posStates.add(new Maze3DState(new Position3D(pDepth,pRow,pCol-1),mState,mState.getPrice()+10));
+                newP=new Position3D(pDepth,pRow,pCol-1);
+                newMState = new Maze3DState(newP,mState,mState.getPrice()+10);
+                posStates.add(newMState);
             }
         }
         if (pCol+1 < maze.getCols()){
             if(tMaze[pDepth][pRow][pCol+1] == 0){
-                posStates.add(new Maze3DState(new Position3D(pDepth,pRow,pCol+1),mState,mState.getPrice()+10));
+                newP=new Position3D(pDepth,pRow,pCol+1);
+                newMState =new Maze3DState(newP,mState,mState.getPrice()+10);
+                posStates.add(newMState);
             }
         }
         if (pDepth+1 < maze.getDepth()){
             if(tMaze[pDepth+1][pRow][pCol] == 0){
-                posStates.add(new Maze3DState(new Position3D(pDepth+1,pRow,pCol),mState,mState.getPrice()+10));
+                newP=new Position3D(pDepth+1,pRow,pCol);
+                newMState =new Maze3DState(newP,mState,mState.getPrice()+10);
+                posStates.add(newMState);
             }
         }
         if (pDepth-1 >=0){
             if(tMaze[pDepth-1][pRow][pCol] == 0){
-                posStates.add(new Maze3DState(new Position3D(pDepth-1,pRow,pCol),mState,mState.getPrice()+10));
+                newP=new Position3D(pDepth-1,pRow,pCol);
+                newMState =new Maze3DState(newP,mState,mState.getPrice()+10);
+                posStates.add(newMState);
             }
         }
         return posStates;

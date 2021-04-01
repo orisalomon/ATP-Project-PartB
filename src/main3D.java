@@ -16,11 +16,11 @@ public class main3D {
 
 
       BreadthFirstSearch bfs = new BreadthFirstSearch();
-  //       DepthFirstSearch dfs = new DepthFirstSearch();
-//        BestFirstSearch best = new BestFirstSearch();
+         DepthFirstSearch dfs = new DepthFirstSearch();
+        BestFirstSearch best = new BestFirstSearch();
         SearchableMaze3D smaze = new SearchableMaze3D(maze);
 //        System.out.println(maze);
-
+        System.out.println("---------------BFS-----------------");
         long start = System.currentTimeMillis();
         Solution sol1 = bfs.solve(smaze);
         long end = System.currentTimeMillis();
@@ -32,5 +32,15 @@ public class main3D {
 //        ) {
 //            System.out.println(s);
 //        }
+        System.out.println("---------------DFS-----------------");
+        long start2 = System.currentTimeMillis();
+        Solution sol2 = dfs.solve(smaze);
+        long end2 = System.currentTimeMillis();
+        System.out.println("Solving time: "+ (end2-start2)/1000);
+        System.out.println("---------------BEST-----------------");
+        long start3 = System.currentTimeMillis();
+        Solution sol3 = best.solve(smaze);
+        long end3 = System.currentTimeMillis();
+        System.out.println("Solving time: "+ (end3-start3)/1000);
     }
 }
