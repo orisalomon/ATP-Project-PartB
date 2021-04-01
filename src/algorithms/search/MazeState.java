@@ -7,9 +7,11 @@ import java.util.Comparator;
 
 public class MazeState extends AState{
 
+    private Position currPos;
     public MazeState(Position currPos, MazeState father, int price) {
-        super(currPos,father,price);
-    }
+        super(father,price);
+        this.currPos = currPos;
+    } //
 
     @Override
     public int hashCode() {
@@ -26,12 +28,18 @@ public class MazeState extends AState{
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
-        return currState.equals(((MazeState) obj).currState);
+        if (obj == null || getClass() != obj.getClass()) return false;
+        return currPos.equals(((MazeState) obj).currPos);
     }
 
     @Override
     public String toString() {
-        return ((Position)currState).toString();
+        return ((Position)currPos).toString();
+    }
+
+    @Override
+    public Object getState() {
+        return currPos;
     }
 
 

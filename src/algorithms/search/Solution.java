@@ -19,7 +19,7 @@ public class Solution {
         solution.add(s);
     }
 
-    /*
+
     public void setPath(AState curr) {
         while (curr != null){
             solution.add(curr);
@@ -28,5 +28,5 @@ public class Solution {
 
         Collections.reverse(solution);
     }
-    */
+
 }

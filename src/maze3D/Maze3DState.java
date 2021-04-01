@@ -6,9 +6,10 @@ import algorithms.search.AState;
 
 
 public class Maze3DState extends AState {
-
-    public Maze3DState(Object currState, AState parent, int price) {
-        super(currState, parent, price);
+    private Position3D currState;
+    public Maze3DState(Position3D currState, AState parent, int price) {
+        super(parent, price);
+        this.currState=currState;
     }
 
     @Override
@@ -26,6 +27,11 @@ public class Maze3DState extends AState {
     @Override
     public String toString() {
         return ((Position3D)this.currState).toString();
+    }
+
+    @Override
+    public Object getState() {
+        return currState;
     }
 
     public Position3D getPosition(){

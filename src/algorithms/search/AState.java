@@ -2,12 +2,12 @@ package algorithms.search;
 
 public abstract class AState {
 
-    protected Object currState;
+//    protected Object currState;
     protected AState parent;
     protected int price;
 
-    public AState(Object currState, AState parent, int price) {
-        this.currState = currState;
+    public AState(AState parent, int price) { //Object currState,
+//        this.currState = currState;
         this.parent = parent;
         this.price = price;
     }
@@ -20,5 +20,7 @@ public abstract class AState {
 
     @Override
     public abstract String toString();
+
+    public abstract Object getState();
 
 }

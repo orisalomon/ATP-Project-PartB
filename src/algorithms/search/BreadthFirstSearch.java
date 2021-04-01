@@ -19,7 +19,7 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
 
         queue.clear();
 
-        visited.add(s.getStartState().currState.toString()); // add the first node
+        visited.add(s.getStartState().getState().toString()); // add the first node
         queue.add(s.getStartState());
 
         while (!queue.isEmpty()){
@@ -28,20 +28,20 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
 
             if (curr.equals(s.getGoalState())){ // if node is the goal node
 
-                Stack<AState> solutionStack = getSolPath(curr); // create path from end to start
-                while (!solutionStack.isEmpty()){ // add the path to solution from start to end
-                    sol.addState(solutionStack.pop());
-                }
-                /*
+//                ArrayList<AState> solutionStack = getSolPath(curr); // create path from end to start
+//                while (!solutionStack.isEmpty()){ // add the path to solution from start to end
+//                    sol.addState(solutionStack.remove);
+               // }
+
                 sol.setPath(curr);
-                */
+
                 return sol;
             }
 
             ArrayList<AState> possibleStates = s.getAllSuccessors(curr); // get possible neighbors to move to
 
             for (AState successor: possibleStates ) {
-                String successorString = successor.currState.toString();
+                String successorString = successor.getState().toString();
                 if (!visited.contains(successorString)) { // check if already visited
                     visited.add(successorString);
                     queue.add(successor);
@@ -54,17 +54,18 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
         return sol;
     }
 
-    private Stack<AState> getSolPath(AState curr) {
-
-        Stack<AState> solutionStack = new Stack<>();
-
-        while (curr != null){
-            solutionStack.push(curr);
-            curr = curr.parent;
-        }
-
-        return solutionStack;
-    }
+//    private ArrayList<AState> getSolPath(AState curr) {
+//
+//        ArrayList<AState> solutionPath = new ArrayList<>();
+//
+//        while (curr != null){
+//            solutionPath.add(curr);
+//            curr = curr.parent;
+//        }
+//
+//        Collections.reverse(solutionPath);
+//        return solutionPath;
+//    }
 
 
 }
