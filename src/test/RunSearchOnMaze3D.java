@@ -11,9 +11,9 @@ public class RunSearchOnMaze3D {
         IMazeGenerator3D mg = new MyMaze3DGenerator();
         Maze3D maze = mg.generate(400,400, 400 );
         SearchableMaze3D searchableMaze = new SearchableMaze3D(maze);
-        solveProblem(searchableMaze, new BreadthFirstSearch());
+//        solveProblem(searchableMaze, new BreadthFirstSearch());
         solveProblem(searchableMaze, new DepthFirstSearch());
-        solveProblem(searchableMaze, new BestFirstSearch());
+//        solveProblem(searchableMaze, new BestFirstSearch());
     }
     private static void solveProblem(ISearchable domain, ISearchingAlgorithm
             searcher) {
