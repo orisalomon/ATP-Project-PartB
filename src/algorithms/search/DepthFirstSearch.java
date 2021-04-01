@@ -1,9 +1,6 @@
 package algorithms.search;
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 public class DepthFirstSearch extends ASearchingAlgorithm{
     @Override
@@ -22,7 +19,7 @@ public class DepthFirstSearch extends ASearchingAlgorithm{
         Stack<AState> stack = new Stack<>();
         HashSet<String> visited = new HashSet<>(); // for visited neighbors
 
-        visited.add(s.getStartState().getState().toString());
+        visited.add(s.getStartState().toString());
         stack.add(s.getStartState());
 
         while (!stack.isEmpty()){
@@ -37,11 +34,12 @@ public class DepthFirstSearch extends ASearchingAlgorithm{
                 return sol;
             }
 
+            ArrayList<AState> allSucc = s.getAllSuccessors(curr);
+            for (AState successor: allSucc) {
 
-            for (AState successor: s.getAllSuccessors(curr)) {
-
-                if (!visited.contains(successor.getState().toString())) {
-                    visited.add(successor.getState().toString());
+                if (!visited.contains(successor.toString())) {
+                    String successorString = successor.toString();
+                    visited.add(successorString);
                     stack.add(successor);
                 }
             }

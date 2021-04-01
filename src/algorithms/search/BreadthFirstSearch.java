@@ -19,7 +19,7 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
 
         queue.clear();
 
-        visited.add(s.getStartState().getState().toString()); // add the first node
+        visited.add(s.getStartState().toString()); // add the first node
         queue.add(s.getStartState());
 
         while (!queue.isEmpty()){
@@ -41,7 +41,7 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
             ArrayList<AState> possibleStates = s.getAllSuccessors(curr); // get possible neighbors to move to
 
             for (AState successor: possibleStates ) {
-                String successorString = successor.getState().toString();
+                String successorString = successor.toString();
                 if (!visited.contains(successorString)) { // check if already visited
                     visited.add(successorString);
                     queue.add(successor);

@@ -8,7 +8,7 @@ public class main {
         Maze newMaze = new MyMazeGenerator().generate(1000,1000);
         long end1 = System.currentTimeMillis();
        System.out.println((end1-start1)/1000);
-//        DepthFirstSearch dfs = new DepthFirstSearch();
+ //      DepthFirstSearch dfs = new DepthFirstSearch();
         BreadthFirstSearch bfs = new BreadthFirstSearch();
 //
 ////        BestFirstSearch best = new BestFirstSearch();
