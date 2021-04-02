@@ -15,10 +15,6 @@ public class Solution {
         return solution;
     }
 
-    public void addState(AState s){
-        solution.add(s);
-    }
-
 
     public void setPath(AState curr) {
         while (curr != null){

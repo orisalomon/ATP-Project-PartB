@@ -15,7 +15,7 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
     @Override
     public Solution solve(ISearchable s) {
         Solution sol = new Solution();
-        HashSet<String> visited = new HashSet<>(); // for visited neighbors  TODO: is it ok to assume Object??
+        HashSet<String> visited = new HashSet<>(); // for visited neighbors  TODO: is it ok to assume String??
 
         queue.clear();
 
@@ -27,14 +27,7 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
             numOfNodesEvaluated++;
 
             if (curr.equals(s.getGoalState())){ // if node is the goal node
-
-//                ArrayList<AState> solutionStack = getSolPath(curr); // create path from end to start
-//                while (!solutionStack.isEmpty()){ // add the path to solution from start to end
-//                    sol.addState(solutionStack.remove);
-               // }
-
                 sol.setPath(curr);
-
                 return sol;
             }
 
@@ -53,19 +46,4 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
         }
         return sol;
     }
-
-//    private ArrayList<AState> getSolPath(AState curr) {
-//
-//        ArrayList<AState> solutionPath = new ArrayList<>();
-//
-//        while (curr != null){
-//            solutionPath.add(curr);
-//            curr = curr.parent;
-//        }
-//
-//        Collections.reverse(solutionPath);
-//        return solutionPath;
-//    }
-
-
 }

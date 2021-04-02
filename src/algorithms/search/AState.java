@@ -4,12 +4,11 @@ import algorithms.mazeGenerators.Position;
 
 public abstract class AState {
 
-//    protected Object currState;
+
     protected AState parent;
     protected int price;
 
-    public AState(AState parent, int price) { //Object currState,
-//        this.currState = currState;
+    public AState(AState parent, int price) {
         this.parent = parent;
         this.price = price;
     }
