@@ -1,5 +1,7 @@
 package algorithms.search;
 
+import algorithms.mazeGenerators.Position;
+
 public abstract class AState {
 
 //    protected Object currState;
@@ -21,6 +23,7 @@ public abstract class AState {
     @Override
     public abstract String toString();
 
-    public abstract Object getState();
-
+    public int getPrice() {
+        return price;
+    }
 }

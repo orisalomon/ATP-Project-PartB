@@ -29,13 +29,10 @@ public class Maze3DState extends AState {
         return ((Position3D)this.currState).toString();
     }
 
-    @Override
-    public Object getState() {
-        return currState;
-    }
+
 
     public Position3D getPosition(){
-        return (Position3D)this.currState;
+        return this.currState;
     }
 
     public int getPrice(){return this.price;}

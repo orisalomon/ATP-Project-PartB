@@ -37,8 +37,8 @@ public class MazeState extends AState{
         return ((Position)currPos).toString();
     }
 
-    @Override
-    public Object getState() {
+
+    public Position getPosition() {
         return currPos;
     }
 

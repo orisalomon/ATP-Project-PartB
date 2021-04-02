@@ -10,7 +10,7 @@ public class main3D {
 
     public static void main(String[] args) {
         long start1 = System.currentTimeMillis();
-        Maze3D maze = new MyMaze3DGenerator().generate(500,500,500);
+        Maze3D maze = new MyMaze3DGenerator().generate(300,300,300);
         long end1 = System.currentTimeMillis();
         System.out.println("Generation time: "+ (end1-start1)/1000);
 
@@ -24,6 +24,9 @@ public class main3D {
         long start = System.currentTimeMillis();
         Solution sol1 = bfs.solve(smaze);
         long end = System.currentTimeMillis();
+        System.out.println(String.format("'%s' algorithm - nodes evaluated: %s", bfs.getName(), bfs.getNumberOfNodesEvaluated()));
+        System.out.println("Solution length: "+ sol1.getSolutionPath().size() );
+        System.out.println("Cost: "+ sol1.getSolutionPath().get(sol1.getSolutionPath().size()-1).getPrice() );
         System.out.println("Solving time: "+ (end-start)/1000);
 
 //        System.out.println(maze);
@@ -36,11 +39,16 @@ public class main3D {
         long start2 = System.currentTimeMillis();
         Solution sol2 = dfs.solve(smaze);
         long end2 = System.currentTimeMillis();
+        System.out.println(String.format("'%s' algorithm - nodes evaluated: %s", dfs.getName(), dfs.getNumberOfNodesEvaluated()));
+        System.out.println("Solution length: "+ sol2.getSolutionPath().size() );
         System.out.println("Solving time: "+ (end2-start2)/1000);
         System.out.println("---------------BEST-----------------");
         long start3 = System.currentTimeMillis();
         Solution sol3 = best.solve(smaze);
         long end3 = System.currentTimeMillis();
+        System.out.println(String.format("'%s' algorithm - nodes evaluated: %s", best.getName(), best.getNumberOfNodesEvaluated()));
+        System.out.println("Solution length: "+ sol3.getSolutionPath().size() );
+        System.out.println("Cost: "+ sol3.getSolutionPath().get(sol3.getSolutionPath().size()-1).getPrice() );
         System.out.println("Solving time: "+ (end3-start3)/1000);
     }
 }
