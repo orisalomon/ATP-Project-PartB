@@ -6,4 +6,6 @@ public interface ISearchable {
     AState getStartState();
     AState getGoalState();
     ArrayList<AState> getAllSuccessors(AState s);
+
+    void setDefault();
 }

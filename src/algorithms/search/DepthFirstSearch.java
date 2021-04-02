@@ -17,9 +17,9 @@ public class DepthFirstSearch extends ASearchingAlgorithm{
     public Solution solve(ISearchable s) {
         Solution sol = new Solution();
         Stack<AState> stack = new Stack<>();
-        HashSet<String> visited = new HashSet<>(); // for visited neighbors
+        //HashSet<String> visited = new HashSet<>(); // for visited neighbors
 
-        visited.add(s.getStartState().toString());
+        //visited.add(s.getStartState().toString());
         stack.add(s.getStartState());
 
         while (!stack.isEmpty()){
@@ -32,15 +32,25 @@ public class DepthFirstSearch extends ASearchingAlgorithm{
 //                    sol.addState(solutionStack.pop());
 //                }
                 sol.setPath(curr);
+                s.setDefault();
                 return sol;
             }
 
-            ArrayList<AState> allSucc = s.getAllSuccessors(curr);
-            for (AState successor: allSucc) {
+            ArrayList<AState> possibleStates = s.getAllSuccessors(curr);
+//            for (AState successor: allSucc) {
+//
+//                if (!visited.contains(successor.toString())) {
+//                    String successorString = successor.toString();
+//                    visited.add(successorString);
+//                    stack.add(successor);
+//                }
+//            }
 
-                if (!visited.contains(successor.toString())) {
-                    String successorString = successor.toString();
-                    visited.add(successorString);
+            for (AState successor: possibleStates ) {
+                //String successorString = successor.toString();
+                if (successor.parent == null && !successor.equals(s.getStartState()) ) { // check if already visited
+                    successor.parent = curr;
+                    //visited.add(successorString);
                     stack.add(successor);
                 }
             }

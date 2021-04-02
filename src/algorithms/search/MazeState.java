@@ -1,17 +1,20 @@
 package algorithms.search;
 
-import algorithms.mazeGenerators.Maze;
 import algorithms.mazeGenerators.Position;
-
-import java.util.Comparator;
 
 public class MazeState extends AState{
 
     private Position currPos;
-    public MazeState(Position currPos, MazeState father, int price) {
+    private boolean wall;
+    public MazeState(Position currPos, boolean wall, MazeState father, int price) {
         super(father,price);
         this.currPos = currPos;
-    } //
+        this.wall = wall;
+    }
+
+    public boolean isWall() {
+        return wall;
+    }
 
     @Override
     public int hashCode() {

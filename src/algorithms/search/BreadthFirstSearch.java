@@ -15,11 +15,11 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
     @Override
     public Solution solve(ISearchable s) {
         Solution sol = new Solution();
-        HashSet<String> visited = new HashSet<>(); // for visited neighbors  TODO: is it ok to assume Object??
+        //HashSet<String> visited = new HashSet<>(); // for visited neighbors  TODO: is it ok to assume Object??
 
         queue.clear();
 
-        visited.add(s.getStartState().toString()); // add the first node
+        //visited.add(s.getStartState().toString()); // add the first node
         queue.add(s.getStartState());
 
         while (!queue.isEmpty()){
@@ -34,16 +34,23 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
                // }
 
                 sol.setPath(curr);
-
+                s.setDefault();
                 return sol;
             }
 
             ArrayList<AState> possibleStates = s.getAllSuccessors(curr); // get possible neighbors to move to
 
+//            for (AState successor: possibleStates ) {
+//                String successorString = successor.toString();
+//                if (!visited.contains(successorString)) { // check if already visited
+//                    visited.add(successorString);
+//                    queue.add(successor);
+//                }
+//            }
+
             for (AState successor: possibleStates ) {
-                String successorString = successor.toString();
-                if (!visited.contains(successorString)) { // check if already visited
-                    visited.add(successorString);
+                if (successor.parent == null && !successor.equals(s.getStartState()) ) { // check if already visited
+                    successor.parent = curr;
                     queue.add(successor);
                 }
             }

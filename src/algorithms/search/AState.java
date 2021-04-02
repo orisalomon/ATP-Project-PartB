@@ -2,7 +2,7 @@ package algorithms.search;
 
 public abstract class AState {
 
-//    protected Object currState;
+    //    protected Object currState;
     protected AState parent;
     protected int price;
 
@@ -10,6 +10,14 @@ public abstract class AState {
 //        this.currState = currState;
         this.parent = parent;
         this.price = price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public int getPrice() {
+        return price;
     }
 
     @Override
