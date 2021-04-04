@@ -42,7 +42,7 @@ public class MyMazeGenerator extends AMazeGenerator {
 
                     stack.push(to_visit);
                 }
-                else{break;}
+//                else{break;}
             }
         }
 

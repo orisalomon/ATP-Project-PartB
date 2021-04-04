@@ -47,7 +47,7 @@ public class MyMaze3DGenerator extends AMaze3DGenerator{
 
                     stack.push(to_visit);
                 }
-                else{break;}
+//                else{break;}
             }
         }
 
