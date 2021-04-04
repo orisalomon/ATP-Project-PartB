@@ -45,9 +45,9 @@ public class Maze {
         for (int i = 0; i<rows; i++){
             ret = ret + "{ ";
             for (int j=0; j<cols; j++) {
-                if (startPosition.toString().equals(i + "," + j)) {
+                if (startPosition.toString().equals("{"+i + "," + j+"}")){
                     ret = ret + "S" + " ";
-                } else if (goalPosition.toString().equals(i + "," + j)) {
+                } else if (goalPosition.toString().equals("{"+i + "," + j+"}")) {
                     ret = ret + "E" + " ";
                 } else {
                     ret = ret + maze[i][j] + " ";
