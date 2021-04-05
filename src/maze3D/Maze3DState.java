@@ -4,6 +4,8 @@ package maze3D;
 import algorithms.mazeGenerators.Position;
 import algorithms.search.AState;
 
+import java.util.Objects;
+
 
 public class Maze3DState extends AState {
     private Position3D currState;
@@ -14,7 +16,7 @@ public class Maze3DState extends AState {
 
     @Override
     public int hashCode() {
-        return 0;
+        return Objects.hash(currState);
     }
 
     @Override

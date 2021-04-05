@@ -17,9 +17,9 @@ public class DepthFirstSearch extends ASearchingAlgorithm{
     public Solution solve(ISearchable s) {
         Solution sol = new Solution();
         Stack<AState> stack = new Stack<>();
-        HashSet<String> visited = new HashSet<>(); // for visited neighbors
+        HashSet<AState> visited = new HashSet<>(); // for visited neighbors
 
-        visited.add(s.getStartState().toString());
+        visited.add(s.getStartState());
         stack.add(s.getStartState());
 
         while (!stack.isEmpty()){
@@ -34,9 +34,9 @@ public class DepthFirstSearch extends ASearchingAlgorithm{
             ArrayList<AState> possibleStates = s.getAllSuccessors(curr);
             for (AState successor: possibleStates) {
 
-                if (!visited.contains(successor.toString())) {
-                    String successorString = successor.toString();
-                    visited.add(successorString);
+                if (!visited.contains(successor)) {
+                    //String successorString = successor.toString();
+                    visited.add(successor);
                     stack.add(successor);
                 }
             }

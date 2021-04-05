@@ -4,6 +4,7 @@ import algorithms.mazeGenerators.Maze;
 import algorithms.mazeGenerators.Position;
 
 import java.util.Comparator;
+import java.util.Objects;
 
 public class MazeState extends AState{
 
@@ -15,9 +16,8 @@ public class MazeState extends AState{
 
     @Override
     public int hashCode() {
-        return 0;
+        return Objects.hash(currPos);
     }
-
 
     @Override
     public boolean equals(Object obj) {

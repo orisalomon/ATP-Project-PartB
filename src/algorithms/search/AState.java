@@ -14,7 +14,7 @@ public abstract class AState {
     }
 
     @Override
-    public abstract int hashCode();
+    public abstract int hashCode(); // state must implement hashcode and equals
 
     @Override
     public abstract boolean equals(Object obj);

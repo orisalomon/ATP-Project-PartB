@@ -2,6 +2,8 @@ package maze3D;
 
 import algorithms.mazeGenerators.Position;
 
+import java.util.Objects;
+
 public class Position3D {
     private int row;
     private int col;
@@ -25,5 +27,10 @@ public class Position3D {
     }
     public String toString() {
         return "{"+depth+","+row+","+col+"}";
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(row, col, depth);
     }
 }
