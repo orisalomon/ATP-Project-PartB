@@ -50,7 +50,8 @@ public class MyMaze3DGenerator extends AMaze3DGenerator{
             }
         }
 
-        maze.maze[goal.getDepthIndex()][goal.getRowIndex()][goal.getColumnIndex()-1] = 0;  // open route for ending point.
+        maze.maze[goal.getDepthIndex()][goal.getRowIndex()][goal.getColumnIndex()-1] = 0;  // open route for ending point- left
+        maze.maze[goal.getDepthIndex()-1][goal.getRowIndex()][goal.getColumnIndex()] = 0;  // open route for ending point - up
         maze.maze[goal.getDepthIndex()][goal.getRowIndex()][goal.getColumnIndex()] = 0;  // ending point.
         return maze;
     }
