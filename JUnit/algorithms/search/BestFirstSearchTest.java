@@ -1,7 +1,7 @@
 package algorithms.search;
 
 import algorithms.mazeGenerators.*;
-import maze3D.*;
+import algorithms.maze3D.*;
 
 import org.junit.jupiter.api.Test;
 

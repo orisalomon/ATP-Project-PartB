@@ -1,8 +1,5 @@
 import algorithms.mazeGenerators.*;
 import algorithms.search.*;
-import maze3D.Maze3D;
-import maze3D.MyMaze3DGenerator;
-import maze3D.SearchableMaze3D;
 
 
 public class main {
@@ -30,12 +27,12 @@ public class main {
         System.out.println("Cost: "+ sol1.getSolutionPath().get(sol1.getSolutionPath().size()-1).getPrice() );
         System.out.println("Solving time: "+ (end-start)/1000);
 
-        System.out.println(maze);
-
-        for (AState s : sol1.getSolutionPath()
-        ) {
-            System.out.println(s);
-        }
+//        System.out.println(maze);
+//
+//        for (AState s : sol1.getSolutionPath()
+//        ) {
+//            System.out.println(s);
+//        }
 
         System.out.println("---------------DFS-----------------");
         long start2 = System.currentTimeMillis();
@@ -54,10 +51,10 @@ public class main {
         System.out.println("Cost: "+ sol3.getSolutionPath().get(sol3.getSolutionPath().size()-1).getPrice() );
         System.out.println("Solving time: "+ (end3-start3)/1000);
 
-        for (AState s : sol3.getSolutionPath()
-        ) {
-            System.out.println(s);
-        }
+//        for (AState s : sol3.getSolutionPath()
+//        ) {
+//            System.out.println(s);
+//        }
 
 
 

@@ -2,9 +2,9 @@
 import algorithms.search.*;
 
 import algorithms.search.Solution;
-import maze3D.Maze3D;
-import maze3D.MyMaze3DGenerator;
-import maze3D.SearchableMaze3D;
+import algorithms.maze3D.Maze3D;
+import algorithms.maze3D.MyMaze3DGenerator;
+import algorithms.maze3D.SearchableMaze3D;
 
 public class main3D {
 

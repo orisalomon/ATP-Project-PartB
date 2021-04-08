@@ -5,7 +5,7 @@ import java.util.*;
 public class DepthFirstSearch extends ASearchingAlgorithm{
     @Override
     public String getName() {
-        return "DFS";
+        return "DepthFirstSearch";
     }
 
     @Override

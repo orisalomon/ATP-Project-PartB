@@ -1,9 +1,7 @@
 package test;
 
 import algorithms.search.*;
-import maze3D.*;
-
-import java.util.ArrayList;
+import algorithms.maze3D.*;
 
 
 public class RunSearchOnMaze3D {
