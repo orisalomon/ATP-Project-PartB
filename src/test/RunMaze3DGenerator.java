@@ -1,7 +1,6 @@
 package test;
 
-import algorithms.mazeGenerators.*;
-import maze3D.*;
+import algorithms.maze3D.*;
 
 public class RunMaze3DGenerator {
 

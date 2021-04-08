@@ -2,24 +2,30 @@
 import algorithms.search.*;
 
 import algorithms.search.Solution;
-import maze3D.Maze3D;
-import maze3D.MyMaze3DGenerator;
-import maze3D.SearchableMaze3D;
+import algorithms.maze3D.Maze3D;
+import algorithms.maze3D.MyMaze3DGenerator;
+import algorithms.maze3D.SearchableMaze3D;
 
 public class main3D {
 
     public static void main(String[] args) {
         long start1 = System.currentTimeMillis();
-        Maze3D maze = new MyMaze3DGenerator().generate(500,500,500);
+        Maze3D maze = new MyMaze3DGenerator().generate(2,2,2);
         long end1 = System.currentTimeMillis();
         System.out.println("Generation time: "+ (end1-start1)/1000);
 
 
-      BreadthFirstSearch bfs = new BreadthFirstSearch();
+        BreadthFirstSearch bfs = new BreadthFirstSearch();
          DepthFirstSearch dfs = new DepthFirstSearch();
         BestFirstSearch best = new BestFirstSearch();
         SearchableMaze3D smaze = new SearchableMaze3D(maze);
-//        System.out.println(maze);
+        maze.print();
+
+        System.out.println(maze);
+        System.out.println("Start point: "+ maze.getStartPosition().toString());
+        System.out.println("Goal point: "+ maze.getGoalPosition().toString());
+
+
         System.out.println("---------------BFS-----------------");
         long start = System.currentTimeMillis();
         Solution sol1 = bfs.solve(smaze);
@@ -51,4 +57,5 @@ public class main3D {
         System.out.println("Cost: "+ sol3.getSolutionPath().get(sol3.getSolutionPath().size()-1).getPrice() );
         System.out.println("Solving time: "+ (end3-start3)/1000);
     }
+
 }

@@ -8,7 +8,7 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
 
     @Override
     public String getName() {
-        return "BFS";
+        return "BreadthFirstSearch";
     }
 
 
@@ -17,7 +17,9 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
         Solution sol = new Solution();
         HashSet<AState> visited = new HashSet<>(); // for visited neighbors
 
+        // clear history results
         queue.clear();
+        numOfNodesEvaluated = 0;
 
         visited.add(s.getStartState()); // add the first node
         queue.add(s.getStartState());
@@ -34,14 +36,13 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
             ArrayList<AState> possibleStates = s.getAllSuccessors(curr); // get possible neighbors to move to
 
             for (AState successor: possibleStates ) {
-                //String successorString = successor.toString();
                 if (!visited.contains(successor)) { // check if already visited
                     visited.add(successor);
                     queue.add(successor);
                 }
             }
 
-            possibleStates.clear();
+            possibleStates.clear();  // clear successors.
 
         }
         return sol;
