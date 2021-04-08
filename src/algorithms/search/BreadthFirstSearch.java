@@ -4,14 +4,26 @@ import java.util.*;
 
 public class BreadthFirstSearch extends ASearchingAlgorithm{
 
+    // field
     protected Queue<AState> queue = new LinkedList<>();
 
+    /**
+     * -- getName --
+     * get the algorithm name
+     * @return String- name.
+     */
     @Override
     public String getName() {
         return "BreadthFirstSearch";
     }
 
 
+    /**
+     * -- solve --
+     * searching algorithm can solve a searching problem and return solution.
+     * @param s - searching problem.
+     * @return Solution
+     */
     @Override
     public Solution solve(ISearchable s) {
         //        if(s == null){
