@@ -10,6 +10,9 @@ public class MazeState extends AState{
 
     private Position currPos;
     public MazeState(Position currPos, MazeState father, int price) {
+        //        if(currState == null ){
+//            throw new Exception("current state must not be null");
+//        }
         super(father,price);
         this.currPos = currPos;
     }

@@ -17,6 +17,9 @@ public class Solution {
 
 
     public void setPath(AState curr) {
+        //        if(curr == null ){
+//            throw new Exception("current state must not be null");
+//        }
         while (curr != null){
             solution.add(curr);
             curr = curr.parent;

@@ -9,6 +9,9 @@ import java.util.Objects;
 public class Maze3DState extends AState {
     private Position3D currState;
     public Maze3DState(Position3D currState, AState parent, int price) {
+        //        if(currState == null ){
+//            throw new Exception("current state must not be null");
+//        }
         super(parent, price);
         this.currState=currState;
     }

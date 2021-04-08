@@ -4,6 +4,9 @@ import java.util.Random;
 public class SimpleMazeGenerator extends AMazeGenerator{
     @Override
     public Maze generate(int rows, int cols) {
+        //        if(rows < 2 || cols < 2){
+//            throw new Exception("row and cols must be positive ints greater than 2");
+//        }
         Position start = new Position(0,0);
         Position goal = new Position(rows-1,cols-1);
 

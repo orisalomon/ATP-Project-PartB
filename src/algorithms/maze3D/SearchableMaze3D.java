@@ -11,6 +11,7 @@ public class SearchableMaze3D implements ISearchable {
 
 
     public SearchableMaze3D(Maze3D maze) {
+        // if(maze == null){throw new Exception("maze must not be null");}
         this.maze = maze;
     }
 
@@ -26,6 +27,7 @@ public class SearchableMaze3D implements ISearchable {
 
     @Override
     public ArrayList<AState> getAllSuccessors(AState s) {
+        // if(s == null){throw new Exception("parameter must not be null");}
         Maze3DState mState = (Maze3DState) s;
         Maze3DState newMState;
         Position3D p = mState.getPosition();

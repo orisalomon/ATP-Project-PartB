@@ -8,6 +8,9 @@ public class Position3D {
     private int depth;
 
     public Position3D( int depth, int row, int col) {
+        //        if(depth < 2 || row < 2 || col < 2){
+//            throw new Exception("depth, row and cols must be positive ints greater than 2");
+//        }
         this.row = row;
         this.depth = depth;
         this.col = col;

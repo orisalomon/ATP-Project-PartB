@@ -8,6 +8,9 @@ public class MyMaze3DGenerator extends AMaze3DGenerator{
 
     @Override
     public Maze3D generate(int depth, int row, int column) {
+        //        if(depth < 2 || row < 2 || column < 2){
+//            throw new Exception("depth, row and cols must be positive ints greater than 2");
+//        }
         Stack<Position3D> stack = new Stack<>();
         Random rand = new Random();
 

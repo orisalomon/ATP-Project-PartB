@@ -8,6 +8,9 @@ public class MyMazeGenerator extends AMazeGenerator {
 
     @Override
     public Maze generate(int rows, int cols) {
+        //        if(rows < 2 || cols < 2){
+//            throw new Exception("row and cols must be positive ints greater than 2");
+//        }
         Stack<Position> stack = new Stack<>();
         Random rand = new Random();
 

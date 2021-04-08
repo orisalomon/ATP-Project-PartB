@@ -15,6 +15,9 @@ public class DepthFirstSearch extends ASearchingAlgorithm{
 
     @Override
     public Solution solve(ISearchable s) {
+        //        if(s == null){
+//            throw new Exception("parameter must not be null");
+//        }
         Solution sol = new Solution();
         Stack<AState> stack = new Stack<>();
         HashSet<AState> visited = new HashSet<>(); // for visited neighbors

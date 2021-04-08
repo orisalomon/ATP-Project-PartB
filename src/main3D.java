@@ -10,7 +10,7 @@ public class main3D {
 
     public static void main(String[] args) {
         long start1 = System.currentTimeMillis();
-        Maze3D maze = new MyMaze3DGenerator().generate(2,2,2);
+        Maze3D maze = new MyMaze3DGenerator().generate(50,50,50);
         long end1 = System.currentTimeMillis();
         System.out.println("Generation time: "+ (end1-start1)/1000);
 

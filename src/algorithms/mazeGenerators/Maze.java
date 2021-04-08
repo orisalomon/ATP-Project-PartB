@@ -11,6 +11,9 @@ public class Maze {
 
 
     public Maze(int rows, int cols, Position startPosition, Position goalPosition) {
+//        if(rows < 2 || cols < 2 || startPosition == null || goalPosition == null){
+//            throw new Exception("row and cols must be positive ints greater than 2, Positions must not be null");
+//        }
         this.rows = rows;
         this.cols = cols;
         this.startPosition = startPosition;

@@ -30,6 +30,9 @@ public class SearchableMaze implements ISearchable {
 
     @Override
     public ArrayList<AState> getAllSuccessors(AState s) {
+        //        if(s == null ){
+//            throw new Exception("current state must not be null");
+//        }
         MazeState mState = (MazeState) s;
         Position p = (Position) mState.getPosition();
         ArrayList<AState> posStates = new ArrayList<>();

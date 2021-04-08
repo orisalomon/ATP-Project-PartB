@@ -12,6 +12,9 @@ public class Maze3D {
 
 
     public Maze3D(int depth, int row, int col, Position3D startPosition, Position3D goalPosition) {
+        //        if(depth < 2 || rows < 2 || cols < 2 || startPosition==null || goalPosition == null){
+//            throw new Exception("depth, row and cols must be positive ints greater than 2, Position must not be null");
+//        }
         this.row = row;
         this.col = col;
         this.depth = depth;
