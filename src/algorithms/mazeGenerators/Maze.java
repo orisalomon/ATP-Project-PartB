@@ -1,23 +1,14 @@
 package algorithms.mazeGenerators;
 
-import java.util.Arrays;
-
 public class Maze {
 
     private int rows;
     private int cols;
     private Position startPosition;
-
-    public Position getStartPosition() {
-        return startPosition;
-    }
-
-    public Position getGoalPosition() {
-        return goalPosition;
-    }
-
     private Position goalPosition;
     protected int[][] maze;
+
+
 
     public Maze(int rows, int cols, Position startPosition, Position goalPosition) {
         this.rows = rows;
@@ -27,9 +18,18 @@ public class Maze {
         maze = new int[rows][cols];
     }
 
+    public Position getStartPosition() {
+        return startPosition;
+    }
+
+    public Position getGoalPosition() {
+        return goalPosition;
+    }
+
     public int getRows() {
         return rows;
     }
+
 
     public int getCols() {
         return cols;
@@ -38,6 +38,7 @@ public class Maze {
     public int[][] getMaze() {
         return maze;
     }
+
 
     @Override
     public String toString() {

@@ -46,39 +46,36 @@ public class Maze3D {
 
     public int[][][] getMap(){return maze;}
 
-
-    @Override
-    public String toString() {
-        String ret = "{\n";
-        for (int i = 0; i<depth; i++){
-
-            for (int j=0; j<row; j++) {
-                ret = ret + "{ ";
-
-                for (int k=0; k<col; k++){
-
-                    if (startPosition.toString().equals(i + "," + j+","+k)) {
-                        ret = ret + "S" + " ";
-                    } else if (goalPosition.toString().equals(i + "," + j+","+k)) {
-                        ret = ret + "E" + " ";
-                    } else {
-                        ret = ret + maze[i][j][k] + " ";
-
+    public void print() {
+        System.out.println("{");
+        for(int depth = 0; depth< maze.length; depth++){
+            for (int row=0; row<maze[0].length; row++) {
+                System.out.print("{ ");
+                for (int col = 0; col < maze[0][0].length; col++) {
+                    if (depth == startPosition.getDepthIndex() && row == startPosition.getRowIndex() && col == startPosition.getColumnIndex()) {
+                        System.out.print("S ");
+                    }
+                    else {
+                        if (depth == goalPosition.getDepthIndex() && row == goalPosition.getRowIndex() && col == goalPosition.getColumnIndex()) {
+                            System.out.print("E ");
+                        }
+                        else {
+                            System.out.print(maze[depth][row][col] + " ");
+                        }
                     }
                 }
-                ret = ret + "}\n";
+                System.out.println("}");
             }
-            if(i!=depth-1) {ret = ret +"-".repeat(col*2+3)+ "\n";}
+            if(depth<maze.length-1){
+                System.out.print("---");
+                for (int i = 0; i<maze[0][0].length;i++){
+                    System.out.print("--");
+                }
+                System.out.println();
+            }
 
         }
-        ret = ret + "}";
-        return ret;
+        System.out.println("}");
     }
-
-
-    public void print() {
-        System.out.println(toString());
-    }
-
 
 }
