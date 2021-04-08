@@ -12,7 +12,7 @@ class BestFirstSearchTest {
     @Test
     void testName() {
         BestFirstSearch best = new BestFirstSearch();
-        assertEquals("BEST-FS",best.getName());
+        assertEquals("BestFirstSearch",best.getName());
     }
 
     @Test
@@ -50,7 +50,7 @@ class BestFirstSearchTest {
     @Test
     void test3DSolvingTime() {
         BestFirstSearch best = new BestFirstSearch();
-        SearchableMaze3D sm = new SearchableMaze3D(new MyMaze3DGenerator().generate(350,350,350));
+        SearchableMaze3D sm = new SearchableMaze3D(new MyMaze3DGenerator().generate(100,100,100));
         long start = System.currentTimeMillis();
         best.solve(sm);
         long end = System.currentTimeMillis();
