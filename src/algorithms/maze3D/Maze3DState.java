@@ -8,6 +8,13 @@ import java.util.Objects;
 
 public class Maze3DState extends AState {
     private Position3D currState;
+
+    /**
+     *
+     * @param currState - represents the current position in the maze
+     * @param parent - represents the previous position in the maze
+     * @param price - each AState have price. some algorithms like "BESTFirstSearch" using it.
+     */
     public Maze3DState(Position3D currState, AState parent, int price) {
         //        if(currState == null ){
 //            throw new Exception("current state must not be null");
@@ -33,8 +40,10 @@ public class Maze3DState extends AState {
         return (this.currState).toString();
     }
 
-
-
+    /**
+     *
+     * @return the position that is represented by the state
+     */
     public Position3D getPosition(){
         return this.currState;
     }

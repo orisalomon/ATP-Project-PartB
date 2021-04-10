@@ -6,6 +6,11 @@ public class Position {
     private int row;
     private int col;
 
+    /**
+     * --- Constructor ---
+     * @param row - row location (index)
+     * @param col - col location (index)
+     */
     public Position(int row, int col) {
         //        if(rows < 1 || cols < 1){
 //            throw new Exception("row and cols must be positive ints");
@@ -13,11 +18,17 @@ public class Position {
         this.row = row;
         this.col = col;
     }
-
+    /**
+     *
+     * @return row index
+     */
     public int getRowIndex() {
         return row;
     }
-
+    /**
+     *
+     * @return column index
+     */
     public int getColumnIndex() {
         return col;
     }

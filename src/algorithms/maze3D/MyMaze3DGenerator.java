@@ -6,6 +6,15 @@ import java.util.Stack;
 
 public class MyMaze3DGenerator extends AMaze3DGenerator{
 
+
+    /**
+     * -- generate --
+     * creates a depth X row X columns size 3D maze
+     * @param depth - depth size of generated maze
+     * @param row - rows number of generated maze
+     * @param column - columns number of generated maze
+     * @return maze3D object
+     */
     @Override
     public Maze3D generate(int depth, int row, int column) {
         //        if(depth < 2 || row < 2 || column < 2){
@@ -56,6 +65,15 @@ public class MyMaze3DGenerator extends AMaze3DGenerator{
         return maze;
     }
 
+    /**
+     * checks the unvisited neighbors of a specific position in the maze
+     * @param current - current position which it's neighbors we want to check
+     * @param c_neighbors - array of positions which will hold the unvisited neighbors
+     * @param row - number of rows in the maze
+     * @param column - number of columns in the maze
+     * @param depth - depth of the maze
+     * @param maze - the maze itself
+     */
     private void checkUnvisitedNeighbors(Position3D current, ArrayList<Position3D> c_neighbors, int row, int column, int depth,  Maze3D maze) {
         if (current.getRowIndex() + 2 < row) {
             if (maze.maze[current.getDepthIndex() ][current.getRowIndex() + 2][current.getColumnIndex()] == 1) {
@@ -89,10 +107,14 @@ public class MyMaze3DGenerator extends AMaze3DGenerator{
             }
 
         }
-
-
-
     }
+
+    /**
+     * breaks the wall between 2 positions in the maze, create path between them
+     * @param current - current position in the maze
+     * @param to_visit - the position which we want to break the wall between it and the current
+     * @param maze - the maze itself
+     */
     private void breakWall(Position3D current, Position3D to_visit, Maze3D maze) {
         if(current.getRowIndex() - to_visit.getRowIndex() == 2){
             maze.maze[current.getDepthIndex()][current.getRowIndex()-1][current.getColumnIndex()] = 0;

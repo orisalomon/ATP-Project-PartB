@@ -9,22 +9,37 @@ public class SearchableMaze3D implements ISearchable {
 
     private Maze3D maze;
 
-
+    /**
+     * --- Constructor ---
+     * @param maze - gets the maze which want to become searchable
+     */
     public SearchableMaze3D(Maze3D maze) {
         // if(maze == null){throw new Exception("maze must not be null");}
         this.maze = maze;
     }
 
+    /**
+     *
+     * @return state that represents the startPosition
+     */
     @Override
     public AState getStartState() {
         return new Maze3DState(maze.getStartPosition(),null,0);
     }
-
+    /**
+     *
+     * @return state that represents the goalPosition
+     */
     @Override
     public AState getGoalState() {
         return new Maze3DState(maze.getGoalPosition(),null,0);
     }
 
+    /**
+     * find of possible states to advance from a specific state
+     * @param s - AState - the state to search all the successors from.
+     * @return arrayList holds states of successors
+     */
     @Override
     public ArrayList<AState> getAllSuccessors(AState s) {
         // if(s == null){throw new Exception("parameter must not be null");}

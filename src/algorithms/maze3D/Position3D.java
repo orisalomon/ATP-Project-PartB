@@ -7,6 +7,12 @@ public class Position3D {
     private int col;
     private int depth;
 
+    /**
+     * --- Constructor ---
+     * @param depth - depth location (index)
+     * @param row - row location (index)
+     * @param col - col location (index)
+     */
     public Position3D( int depth, int row, int col) {
         //        if(depth < 2 || row < 2 || col < 2){
 //            throw new Exception("depth, row and cols must be positive ints greater than 2");
@@ -16,8 +22,20 @@ public class Position3D {
         this.col = col;
     }
 
+    /**
+     *
+     * @return depth index
+     */
     public int getDepthIndex(){return depth;}
+    /**
+     *
+     * @return row index
+     */
     public int getRowIndex(){return row;}
+    /**
+     *
+     * @return column index
+     */
     public int getColumnIndex(){return col;}
 
     public boolean equals(Object o) {

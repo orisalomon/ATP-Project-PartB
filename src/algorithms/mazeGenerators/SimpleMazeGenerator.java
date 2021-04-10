@@ -2,6 +2,13 @@ package algorithms.mazeGenerators;
 import java.util.Random;
 
 public class SimpleMazeGenerator extends AMazeGenerator{
+
+    /**
+     * creates a rows X cols maze randomly with at least one guaranteed solution
+     * @param rows - rows number of generated maze
+     * @param cols - columns number of generated maze
+     * @return maze object
+     */
     @Override
     public Maze generate(int rows, int cols) {
         //        if(rows < 2 || cols < 2){
