@@ -15,11 +15,12 @@ public class Maze3DState extends AState {
      * @param parent - represents the previous position in the maze
      * @param price - each AState have price. some algorithms like "BESTFirstSearch" using it.
      */
-    public Maze3DState(Position3D currState, AState parent, int price) {
-        //        if(currState == null ){
-//            throw new Exception("current state must not be null");
-//        }
+    public Maze3DState(Position3D currState, AState parent, int price) throws Exception {
         super(parent, price);
+        if(currState == null ){
+            throw new Exception("current state must not be null");
+        }
+
         this.currState=currState;
     }
 

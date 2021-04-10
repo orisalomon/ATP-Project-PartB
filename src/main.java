@@ -3,7 +3,7 @@ import algorithms.search.*;
 
 
 public class main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         long start1 = System.currentTimeMillis();
         Maze maze = new MyMazeGenerator().generate(100,100);
         Maze maze2 = new MyMazeGenerator().generate(100,100);

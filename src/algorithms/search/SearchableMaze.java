@@ -32,7 +32,7 @@ public class SearchableMaze implements ISearchable {
      * @return AState
      */
     @Override
-    public AState getStartState() {
+    public AState getStartState() throws Exception {
         return new MazeState(maze.getStartPosition(),null,0);
     }
 
@@ -42,7 +42,7 @@ public class SearchableMaze implements ISearchable {
      * @return AState
      */
     @Override
-    public AState getGoalState() {return new MazeState(maze.getGoalPosition(),null,0);}
+    public AState getGoalState() throws Exception {return new MazeState(maze.getGoalPosition(),null,0);}
 
 
     /**
@@ -52,10 +52,10 @@ public class SearchableMaze implements ISearchable {
      * @return ArrayList<AState> - List of all the possible AStates.
      */
     @Override
-    public ArrayList<AState> getAllSuccessors(AState s) {
-        //        if(s == null ){
-//            throw new Exception("current state must not be null");
-//        }
+    public ArrayList<AState> getAllSuccessors(AState s) throws Exception {
+        if(s == null ){
+            throw new Exception("current state must not be null");
+        }
         MazeState mState = (MazeState) s;           // the given state is MazeState
         Position p = (Position) mState.getPosition();   // position of the state
         ArrayList<AState> posStates = new ArrayList<>(); // possible states array for the ans.

@@ -9,7 +9,7 @@ public interface IMazeGenerator3D {
      * @param column - columns number of generated maze
      * @return maze3D object
      */
-    Maze3D generate(int depth, int row, int column);
+    Maze3D generate(int depth, int row, int column) throws Exception;
 
     /**
      * -- measureAlgorithmTimeMillis --
@@ -19,5 +19,5 @@ public interface IMazeGenerator3D {
      * @param column - columns number of generated maze
      * @return the time in milliSeconds
      */
-    long measureAlgorithmTimeMillis(int depth, int row, int column);
+    long measureAlgorithmTimeMillis(int depth, int row, int column) throws Exception;
 }

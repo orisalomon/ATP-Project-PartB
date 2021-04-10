@@ -11,10 +11,10 @@ public class Position {
      * @param row - row location (index)
      * @param col - col location (index)
      */
-    public Position(int row, int col) {
-        //        if(rows < 1 || cols < 1){
-//            throw new Exception("row and cols must be positive ints");
-//        }
+    public Position(int row, int col) throws Exception {
+        if(row < 0 || col < 0){
+            throw new Exception("row and cols must be positive ints");
+        }
         this.row = row;
         this.col = col;
     }
@@ -51,12 +51,5 @@ public class Position {
         return Objects.hash(row, col);
     }
 
-//    public void setCol(int col) {
-//        this.col = col;
-//    }
-//
-//    public void setRow(int row) {
-//        this.row = row;
-//    }
 }
 

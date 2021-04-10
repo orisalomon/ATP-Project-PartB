@@ -16,10 +16,10 @@ public class MyMaze3DGenerator extends AMaze3DGenerator{
      * @return maze3D object
      */
     @Override
-    public Maze3D generate(int depth, int row, int column) {
-        //        if(depth < 2 || row < 2 || column < 2){
-//            throw new Exception("depth, row and cols must be positive ints greater than 2");
-//        }
+    public Maze3D generate(int depth, int row, int column) throws Exception {
+        if(depth < 2 || row < 2 || column < 2){
+            throw new Exception("depth, row and cols must be positive ints greater than 2");
+        }
         Stack<Position3D> stack = new Stack<>();
         Random rand = new Random();
 
@@ -74,7 +74,7 @@ public class MyMaze3DGenerator extends AMaze3DGenerator{
      * @param depth - depth of the maze
      * @param maze - the maze itself
      */
-    private void checkUnvisitedNeighbors(Position3D current, ArrayList<Position3D> c_neighbors, int row, int column, int depth,  Maze3D maze) {
+    private void checkUnvisitedNeighbors(Position3D current, ArrayList<Position3D> c_neighbors, int row, int column, int depth,  Maze3D maze) throws Exception {
         if (current.getRowIndex() + 2 < row) {
             if (maze.maze[current.getDepthIndex() ][current.getRowIndex() + 2][current.getColumnIndex()] == 1) {
                 c_neighbors.add(new Position3D(current.getDepthIndex(),current.getRowIndex() + 2, current.getColumnIndex()));

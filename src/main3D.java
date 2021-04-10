@@ -8,7 +8,7 @@ import algorithms.maze3D.SearchableMaze3D;
 
 public class main3D {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         long start1 = System.currentTimeMillis();
         Maze3D maze = new MyMaze3DGenerator().generate(50,50,50);
         long end1 = System.currentTimeMillis();

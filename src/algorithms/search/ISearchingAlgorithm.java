@@ -20,5 +20,5 @@ public interface ISearchingAlgorithm {
      * @param domain - searching problem.
      * @return Solution
      */
-    Solution solve(ISearchable domain);
+    Solution solve(ISearchable domain) throws Exception;
 }

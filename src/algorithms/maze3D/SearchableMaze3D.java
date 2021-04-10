@@ -13,8 +13,8 @@ public class SearchableMaze3D implements ISearchable {
      * --- Constructor ---
      * @param maze - gets the maze which want to become searchable
      */
-    public SearchableMaze3D(Maze3D maze) {
-        // if(maze == null){throw new Exception("maze must not be null");}
+    public SearchableMaze3D(Maze3D maze) throws Exception {
+         if(maze == null){throw new Exception("maze must not be null");}
         this.maze = maze;
     }
 
@@ -23,7 +23,7 @@ public class SearchableMaze3D implements ISearchable {
      * @return state that represents the startPosition
      */
     @Override
-    public AState getStartState() {
+    public AState getStartState() throws Exception {
         return new Maze3DState(maze.getStartPosition(),null,0);
     }
     /**
@@ -31,7 +31,7 @@ public class SearchableMaze3D implements ISearchable {
      * @return state that represents the goalPosition
      */
     @Override
-    public AState getGoalState() {
+    public AState getGoalState() throws Exception {
         return new Maze3DState(maze.getGoalPosition(),null,0);
     }
 
@@ -41,8 +41,8 @@ public class SearchableMaze3D implements ISearchable {
      * @return arrayList holds states of successors
      */
     @Override
-    public ArrayList<AState> getAllSuccessors(AState s) {
-        // if(s == null){throw new Exception("parameter must not be null");}
+    public ArrayList<AState> getAllSuccessors(AState s) throws Exception {
+         if(s == null){throw new Exception("State must not be null");}
         Maze3DState mState = (Maze3DState) s;
         Maze3DState newMState;
         Position3D p = mState.getPosition();

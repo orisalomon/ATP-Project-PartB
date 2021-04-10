@@ -5,7 +5,7 @@ import algorithms.maze3D.*;
 
 
 public class RunSearchOnMaze3D {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         IMazeGenerator3D mg = new MyMaze3DGenerator();
         Maze3D maze = mg.generate(400,400, 400 );
         SearchableMaze3D searchableMaze = new SearchableMaze3D(maze);
@@ -14,7 +14,7 @@ public class RunSearchOnMaze3D {
 //        solveProblem(searchableMaze, new BestFirstSearch());
     }
     private static void solveProblem(ISearchable domain, ISearchingAlgorithm
-            searcher) {
+            searcher) throws Exception {
 //Solve a searching problem with a searcher
         long start = System.currentTimeMillis();
         Solution solution = searcher.solve(domain);

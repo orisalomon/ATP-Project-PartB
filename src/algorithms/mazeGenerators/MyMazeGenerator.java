@@ -13,10 +13,10 @@ public class MyMazeGenerator extends AMazeGenerator {
      * @return maze object
      */
     @Override
-    public Maze generate(int rows, int cols) {
-        //        if(rows < 2 || cols < 2){
-//            throw new Exception("row and cols must be positive ints greater than 2");
-//        }
+    public Maze generate(int rows, int cols) throws Exception {
+        if(rows < 2 || cols < 2){
+            throw new Exception("row and cols must be positive ints greater than 2");
+        }
         Stack<Position> stack = new Stack<>();
         Random rand = new Random();
 
@@ -86,7 +86,7 @@ public class MyMazeGenerator extends AMazeGenerator {
      * @param cols - number of columns in the maze
      * @param maze - the maze itself
      */
-    private void checkUnvisitedNeighbors(Position current, ArrayList<Position> c_neighbors, int rows, int cols, Maze maze) {
+    private void checkUnvisitedNeighbors(Position current, ArrayList<Position> c_neighbors, int rows, int cols, Maze maze) throws Exception {
         if (current.getRowIndex() + 2 < rows) {
             if (maze.maze[current.getRowIndex() + 2][current.getColumnIndex()] == 1) {
                 c_neighbors.add(new Position(current.getRowIndex() + 2, current.getColumnIndex()));

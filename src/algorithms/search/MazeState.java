@@ -17,11 +17,11 @@ public class MazeState extends AState{
      * @param father - MazeState - to create the solution path. (mazeState is node in searching problem)
      * @param price - int - cost of each state
      */
-    public MazeState(Position currPos, MazeState father, int price) {
-        //        if(currState == null ){
-//            throw new Exception("current state must not be null");
-//        }
+    public MazeState(Position currPos, MazeState father, int price) throws Exception {
         super(father,price);
+        if(currPos == null ){
+            throw new Exception("current state must not be null");
+        }
         this.currPos = currPos;
     }
 

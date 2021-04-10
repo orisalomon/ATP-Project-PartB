@@ -10,10 +10,10 @@ public class SimpleMazeGenerator extends AMazeGenerator{
      * @return maze object
      */
     @Override
-    public Maze generate(int rows, int cols) {
-        //        if(rows < 2 || cols < 2){
-//            throw new Exception("row and cols must be positive ints greater than 2");
-//        }
+    public Maze generate(int rows, int cols) throws Exception {
+        if(rows < 2 || cols < 2){
+            throw new Exception("row and cols must be positive ints greater than 2");
+        }
         Position start = new Position(0,0);
         Position goal = new Position(rows-1,cols-1);
 

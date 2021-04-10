@@ -27,10 +27,10 @@ public class Solution {
      * -- setPath --
      * @param curr - AState - the last node of the path.
      */
-    public void setPath(AState curr) {
-        //        if(curr == null ){
-//            throw new Exception("current state must not be null");
-//        }
+    public void setPath(AState curr) throws Exception {
+        if(curr == null ){
+            throw new Exception("current state must not be null");
+        }
         while (curr != null){     // add all the nodes of the path to the solution array.
             solution.add(curr);
             curr = curr.parent;
