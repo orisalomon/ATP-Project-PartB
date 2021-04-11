@@ -6,7 +6,7 @@ import algorithms.maze3D.*;
 
 public class RunSearchOnMaze3D {
     public static void main(String[] args) throws Exception {
-        IMazeGenerator3D mg = new MyMaze3DGenerator();
+        IMaze3DGenerator mg = new MyMaze3DGenerator();
         Maze3D maze = mg.generate(400,400, 400 );
         SearchableMaze3D searchableMaze = new SearchableMaze3D(maze);
 //        solveProblem(searchableMaze, new BreadthFirstSearch());
