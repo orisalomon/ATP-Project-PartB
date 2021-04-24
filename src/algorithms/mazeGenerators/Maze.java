@@ -91,4 +91,43 @@ public class Maze {
     public void print() {
         System.out.println(toString());
     }
+
+    public byte[] toByteArray() {
+        byte[] mazeByteArray = new byte[24+rows*cols];
+        int i = 0;
+
+        int r = rows;
+        int c = cols;
+        int start_row = startPosition.getRowIndex();
+        int start_col = startPosition.getColumnIndex();
+        int end_row = goalPosition.getRowIndex();
+        int end_col = goalPosition.getColumnIndex();
+
+        // insert maze data
+        while (i<4){
+            mazeByteArray[i] = (byte) Math.min(255,r);
+            mazeByteArray[i+4] = (byte) Math.min(255,c);
+            mazeByteArray[i+8] = (byte) Math.min(255,start_row);
+            mazeByteArray[i+12] = (byte) Math.min(255,start_col);
+            mazeByteArray[i+16] = (byte) Math.min(255,end_row);
+            mazeByteArray[i+20] = (byte) Math.min(255,end_col);
+            r = Math.min(mazeByteArray[i],0) ;
+            c = Math.min(mazeByteArray[i+4],0) ;
+            start_row = Math.min(mazeByteArray[i+8],0) ;
+            start_col = Math.min(mazeByteArray[i+12],0) ;
+            end_row = Math.min(mazeByteArray[i+16],0) ;
+            end_col = Math.min(mazeByteArray[i+20],0) ;
+            i++;
+        }
+
+        // insert maze map
+        int k=24; // current index in mazeByteArray.
+        for(i=0;i<rows;i++){
+            for(int j=0;j<cols; j++){
+                mazeByteArray[k] = (byte) maze[i][j];
+            }
+        }
+
+        return mazeByteArray;
+    }
 }
