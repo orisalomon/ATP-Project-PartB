@@ -26,6 +26,46 @@ public class Maze {
         this.goalPosition = goalPosition;
         maze = new int[rows][cols];
     }
+
+    public Maze(byte[] savedMazeBytes) throws Exception {
+        rows=0;
+        cols=0;
+        int start_row = 0;
+        int start_col = 0;
+        int goal_row = 0;
+        int goal_col = 0;
+
+        int i;
+        for(i=0; i<24;i++){
+            if(i<4){
+                rows+=savedMazeBytes[i];
+            }
+            else if(i<8){
+                cols+=savedMazeBytes[i];
+            }
+            else if(i<12){
+                start_row+=savedMazeBytes[i];
+            }
+            else if(i<16){
+                start_col+=savedMazeBytes[i];
+            }
+            else if(i<20){
+                goal_row+=savedMazeBytes[i];
+            }
+            else if (i<24){
+                goal_col+=savedMazeBytes[i];
+            }
+        }
+        maze = new int[rows][cols];
+        startPosition = new Position(start_row,start_col);
+        goalPosition = new Position(goal_row,goal_col);
+        for(int j=0;j<rows;j++){
+            for (int k = 0; k < cols; k++) {
+                maze[j][k] = savedMazeBytes[i++];
+            }
+        }
+    }
+
     /**
      *
      * @return the startPosition of the maze
@@ -124,7 +164,7 @@ public class Maze {
         int k=24; // current index in mazeByteArray.
         for(i=0;i<rows;i++){
             for(int j=0;j<cols; j++){
-                mazeByteArray[k] = (byte) maze[i][j];
+                mazeByteArray[k++] = (byte) maze[i][j];
             }
         }
 

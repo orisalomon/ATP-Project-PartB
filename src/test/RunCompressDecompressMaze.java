@@ -6,7 +6,7 @@ import algorithms.mazeGenerators.Maze;
 import algorithms.mazeGenerators.MyMazeGenerator;
 import java.io.*;
 import java.util.Arrays;
-
+/*
 public class RunCompressDecompressMaze {
     public static void main(String[] args) throws Exception { String mazeFileName = "savedMaze.maze";
         AMazeGenerator mazeGenerator = new MyMazeGenerator();
@@ -33,3 +33,4 @@ public class RunCompressDecompressMaze {
 //maze should be equal to loadedMaze
     }
 }
+*/

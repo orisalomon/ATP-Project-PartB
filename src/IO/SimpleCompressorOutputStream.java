@@ -12,7 +12,7 @@ public class SimpleCompressorOutputStream extends OutputStream {
 
     @Override
     public void write(int b) throws IOException {
-        out.write(b);
+        out.write((byte)b);
     }
 
     @Override
@@ -28,7 +28,6 @@ public class SimpleCompressorOutputStream extends OutputStream {
         int zeros = 0;
         int ones = 0;
         for(i=24;i<b.length;i++){
-
 
             if(b[i] == 0){
                 zeros++;
@@ -60,6 +59,8 @@ public class SimpleCompressorOutputStream extends OutputStream {
                 }
             }
         }
+        if(zeros>0){write(zeros);}
+        if(ones>0){write(ones);}
 
     }
 }

@@ -2,37 +2,48 @@ package IO;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 
 public class SimpleDecompressorInputStream extends InputStream {
     InputStream in;
 
-    public SimpleCompressorOutputStream(OutputStream out) {
-        this.in = out;
+    public SimpleDecompressorInputStream(InputStream in) {
+        this.in = in;
     }
 
     @Override
-    public void write(int b) throws IOException {
-
+    public int read() throws IOException {
+        return in.read();
     }
 
     @Override
-    public void write(byte[] b) throws IOException {
+    public int read(byte[] readTo) throws IOException {
+        int i;
+        int totalRead = 0;
         boolean isZero = true;
-        for (byte myByte: b
-        ) {
-            if(isZero) {
-                for (byte i = 0; i < myByte; i++) {
-                    in.write(0);
-                }
-                isZero = false;
+
+        for (i=0;i<24;i++){
+            readTo[i] = (byte)read();
+        }
+        while(i<readTo.length){
+            if(isZero){
+                 int count =read();
+                 totalRead++;
+                 for(int j=0;j<count;j++){
+                     readTo[i++] = 0;
+                 }
+                 isZero = false;
             }
-            else {
-                for (byte i = 0; i < myByte; i++) {
-                    in.write(1);
+            else{
+                int count =read();
+                totalRead++;
+                for(int j=0;j<count;j++){
+                    readTo[i++] = 1;
                 }
                 isZero = true;
             }
         }
+        return totalRead;
     }
 }
+
+
