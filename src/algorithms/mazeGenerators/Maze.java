@@ -145,6 +145,7 @@ public class Maze {
 
         // insert maze data
         while (i<4){
+
             mazeByteArray[i] = (byte) Math.min(255,r);
             mazeByteArray[i+4] = (byte) Math.min(255,c);
             mazeByteArray[i+8] = (byte) Math.min(255,start_row);
