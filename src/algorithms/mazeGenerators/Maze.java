@@ -38,24 +38,25 @@ public class Maze {
         int i;
         for(i=0; i<24;i++){
             if(i<4){
-                rows+=savedMazeBytes[i];
+                rows+= savedMazeBytes[i]<0?savedMazeBytes[i]+256:savedMazeBytes[i];
             }
             else if(i<8){
-                cols+=savedMazeBytes[i];
+                cols+=savedMazeBytes[i]<0?savedMazeBytes[i]+256:savedMazeBytes[i];;
             }
             else if(i<12){
-                start_row+=savedMazeBytes[i];
+                start_row+=savedMazeBytes[i]<0?savedMazeBytes[i]+256:savedMazeBytes[i];;
             }
             else if(i<16){
-                start_col+=savedMazeBytes[i];
+                start_col+=savedMazeBytes[i]<0?savedMazeBytes[i]+256:savedMazeBytes[i];;
             }
             else if(i<20){
-                goal_row+=savedMazeBytes[i];
+                goal_row+=savedMazeBytes[i]<0?savedMazeBytes[i]+256:savedMazeBytes[i];;
             }
             else if (i<24){
-                goal_col+=savedMazeBytes[i];
+                goal_col+=savedMazeBytes[i]<0?savedMazeBytes[i]+256:savedMazeBytes[i];;
             }
         }
+        i=24;
         maze = new int[rows][cols];
         startPosition = new Position(start_row,start_col);
         goalPosition = new Position(goal_row,goal_col);
@@ -152,12 +153,12 @@ public class Maze {
             mazeByteArray[i+12] = (byte) Math.min(255,start_col);
             mazeByteArray[i+16] = (byte) Math.min(255,end_row);
             mazeByteArray[i+20] = (byte) Math.min(255,end_col);
-            r = Math.min(mazeByteArray[i],0) ;
-            c = Math.min(mazeByteArray[i+4],0) ;
-            start_row = Math.min(mazeByteArray[i+8],0) ;
-            start_col = Math.min(mazeByteArray[i+12],0) ;
-            end_row = Math.min(mazeByteArray[i+16],0) ;
-            end_col = Math.min(mazeByteArray[i+20],0) ;
+            r = mazeByteArray[i]<0? r-(mazeByteArray[i]+256):r-mazeByteArray[i];
+            c = mazeByteArray[i+4]<0? c-(mazeByteArray[i+4]+256):c-mazeByteArray[i+4];
+            start_row = mazeByteArray[i+8]<0? start_row-(mazeByteArray[i+8]+256):start_row-mazeByteArray[i];
+            start_col = mazeByteArray[i+12]<0? start_col-(mazeByteArray[i+12]+256):start_col-mazeByteArray[i];
+            end_row = mazeByteArray[i+16]<0? end_row-(mazeByteArray[i+16]+256):end_row-mazeByteArray[i];
+            end_col = mazeByteArray[i+20]<0? end_col-(mazeByteArray[i+20]+256):end_col-mazeByteArray[i];
             i++;
         }
 

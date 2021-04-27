@@ -12,7 +12,7 @@ public class SimpleCompressorTest {
     public static void main(String[] args) throws Exception {
         String path = "C:\\Users\\Ori\\Desktop\\test.txt";
         AMazeGenerator mazeGenerator = new MyMazeGenerator();
-        Maze maze = mazeGenerator.generate(127, 127); //Generate new maze
+        Maze maze = mazeGenerator.generate(1000, 1000); //Generate new maze
 //        maze.print();
 
         try {

@@ -27,6 +27,7 @@ public class SimpleDecompressorInputStream extends InputStream {
         while(i<readTo.length){
             if(isZero){
                  int count =read();
+                 count = count<0? count+256: count;
                  totalRead++;
                  for(int j=0;j<count;j++){
                      readTo[i++] = 0;
@@ -35,6 +36,7 @@ public class SimpleDecompressorInputStream extends InputStream {
             }
             else{
                 int count =read();
+                count = count<0? count+256: count;
                 totalRead++;
                 for(int j=0;j<count;j++){
                     readTo[i++] = 1;
