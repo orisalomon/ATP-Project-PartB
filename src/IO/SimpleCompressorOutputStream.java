@@ -18,7 +18,6 @@ public class SimpleCompressorOutputStream extends OutputStream {
     @Override
     public void write(byte[] b) throws IOException {
         int i;// current index in b.
-        boolean isZero = true;
 
         for(i=0;i<24;i++){
             write(b[i]);
