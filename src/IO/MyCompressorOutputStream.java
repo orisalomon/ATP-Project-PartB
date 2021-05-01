@@ -6,6 +6,14 @@ import java.io.OutputStream;
 public class MyCompressorOutputStream extends OutputStream {
     OutputStream out;
 
+    public OutputStream getOut() {
+        return out;
+    }
+
+    public void setOut(OutputStream out) {
+        this.out = out;
+    }
+
     public MyCompressorOutputStream(OutputStream out) {
         this.out = out;
     }
