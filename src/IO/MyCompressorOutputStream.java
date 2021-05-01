@@ -28,11 +28,12 @@ public class MyCompressorOutputStream extends OutputStream {
         int pow = 0;
         // compress maze
         while(i<b.length){
-            if(pow == 8){write(acc);pow=0;acc=0;}
+            if(pow == 8 && i<b.length-1){write(acc);pow=0;acc=0;}
 
-            acc+= Math.pow(b[i],pow);
+            acc+= Math.pow(2,pow)*b[i];
             pow++;
             i++;
         }
+        write(acc);
     }
 }

@@ -22,7 +22,6 @@ public class MyDecompressorInputStream extends InputStream {
         int i;
         int totalRead = 0;
 
-
         for (i = 0; i < 24; i++) {
             readTo[i] = (byte) read();
             totalRead++;
@@ -34,7 +33,7 @@ public class MyDecompressorInputStream extends InputStream {
             totalRead++;
             for(int j=0;j<8 && i<readTo.length;j++){
                 readTo[i++] = (byte)(num%2);
-
+                num = num/2;
             }
         }
         return totalRead;
