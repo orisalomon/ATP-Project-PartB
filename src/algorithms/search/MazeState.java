@@ -6,7 +6,7 @@ import algorithms.mazeGenerators.Position;
 import java.util.Comparator;
 import java.util.Objects;
 
-public class MazeState extends AState{
+public class MazeState extends AState {
 
     // field
     private Position currPos;

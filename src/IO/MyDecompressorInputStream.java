@@ -3,8 +3,9 @@ package IO;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 
-public class MyDecompressorInputStream extends InputStream {
+public class MyDecompressorInputStream extends InputStream  implements Serializable {
 
     InputStream in;
 

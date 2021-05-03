@@ -16,7 +16,7 @@ public class DepthFirstSearch extends ASearchingAlgorithm{
 
     /**
      * -- getNumberOfNodesEvaluated --
-     * returns the number of nodes that the algorithm has been found. // TODO: why need it here?
+     * returns the number of nodes that the algorithm has been found.
      * @return int.
      */
     @Override

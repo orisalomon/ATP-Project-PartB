@@ -39,8 +39,8 @@ public class Server {
                     Socket clientSocket = serverSocket.accept();
                     threadPool.submit(()-> handleClient(clientSocket)); // TODO: change handleClient name??
                 }
-                catch (SocketTimeoutException e) { // TODO: need to print e.printStackTrace()?
-                    System.out.println("Socket Timeout");
+                catch (SocketTimeoutException e) { // TODO: need to print e.printStackTrace()? - YES
+                    e.printStackTrace();
                 }
 
             }

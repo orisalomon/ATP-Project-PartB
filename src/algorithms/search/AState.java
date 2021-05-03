@@ -1,7 +1,9 @@
 package algorithms.search;
 
 
-public abstract class AState {
+import java.io.Serializable;
+
+public abstract class AState implements Serializable {
 
     // fields
     protected AState parent;
@@ -24,7 +26,7 @@ public abstract class AState {
     public abstract boolean equals(Object obj); // state must implement equals
 
     @Override
-    public abstract String toString();  // TODO: why we need this??
+    public abstract String toString();
 
     /**
      * -- getPrice --

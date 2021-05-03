@@ -2,8 +2,9 @@ package IO;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.Serializable;
 
-public class MyCompressorOutputStream extends OutputStream {
+public class MyCompressorOutputStream extends OutputStream implements Serializable {
     OutputStream out;
 
     public OutputStream getOut() {
@@ -36,7 +37,7 @@ public class MyCompressorOutputStream extends OutputStream {
         int pow = 0;
         // compress maze
         while(i<b.length){
-            if(pow == 8 && i<b.length-1){write(acc);pow=0;acc=0;}
+            if(pow == 8){write(acc);pow=0;acc=0;}
 
             acc+= Math.pow(2,pow)*b[i];
             pow++;
