@@ -2,6 +2,8 @@ package algorithms.mazeGenerators;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Objects;
 
 public class Maze  implements Serializable{
 
@@ -108,7 +110,6 @@ public class Maze  implements Serializable{
     public int[][] getMaze() {
         return maze;
     }
-
 
     @Override
     public String toString() {

@@ -22,7 +22,7 @@ public class Server {
         this.strategy = strategy;
         this.port = port;
         this.listeningIntervalMS = listeningIntervalMS;
-        this.threadPool = Executors.newFixedThreadPool(2 /* reading from config */); // only 2 threads working parallel. TODO: change the threads num from config file
+        this.threadPool = Executors.newFixedThreadPool(4 /* reading from config */); // only 2 threads working parallel. TODO: change the threads num from config file
 
     }
 
@@ -39,12 +39,12 @@ public class Server {
                     Socket clientSocket = serverSocket.accept();
                     threadPool.submit(()-> handleClient(clientSocket)); // TODO: change handleClient name??
                 }
-                catch (SocketTimeoutException e) { // TODO: need to print e.printStackTrace()? - YES
+                catch (SocketTimeoutException e) {
                     e.printStackTrace();
                 }
 
             }
-            threadPool.shutdownNow(); // TODO: need to shut down now immediately or just shut down without interrupts??
+            threadPool.shutdown();
         }
         catch (IOException e) {e.printStackTrace();}
 
