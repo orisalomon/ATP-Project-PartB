@@ -13,8 +13,16 @@ public class ServerStrategyGenerateMaze implements IServerStrategy{
         try {
             int[] fromClientArray = (int[]) fromClient.readObject();
             if(fromClientArray.length != 2){throw new Exception("Array length must be 2.");}
-            Maze maze = new MyMazeGenerator().generate(fromClientArray[0],fromClientArray[1]);
+            Configurations conf = Configurations.getInstance();
+            String genAlgorithm = conf.getGenAlgorithm();
+            Maze maze = null;
+            switch (genAlgorithm) {
+                case "Empty" -> maze = new EmptyMazeGenerator().generate(fromClientArray[0], fromClientArray[1]);
+                case "Simple" -> maze = new SimpleMazeGenerator().generate(fromClientArray[0], fromClientArray[1]);
+                case "My" -> maze = new MyMazeGenerator().generate(fromClientArray[0], fromClientArray[1]);
+            }
             MyCompressorOutputStream compressor = new MyCompressorOutputStream(new ByteArrayOutputStream());
+            assert maze != null; // maze must have algorithm.
             compressor.write(maze.toByteArray());
             compressor.flush();
             toClient.writeObject(((ByteArrayOutputStream)compressor.getOut()).toByteArray());

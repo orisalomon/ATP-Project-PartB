@@ -1,11 +1,11 @@
 package Server;
 
 import IO.MyCompressorOutputStream;
+import algorithms.mazeGenerators.EmptyMazeGenerator;
 import algorithms.mazeGenerators.Maze;
 import algorithms.mazeGenerators.MyMazeGenerator;
-import algorithms.search.BreadthFirstSearch;
-import algorithms.search.SearchableMaze;
-import algorithms.search.Solution;
+import algorithms.mazeGenerators.SimpleMazeGenerator;
+import algorithms.search.*;
 
 import java.io.*;
 import java.util.Arrays;
@@ -78,11 +78,18 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
 
             System.out.println(Thread.currentThread().getName() + "is exit the CS");
             mutex.release();
-
-            BreadthFirstSearch bfs = new BreadthFirstSearch(); // TODO: change to config file
+            Configurations conf = Configurations.getInstance();
+            String solver = conf.getSolverAlgorithm();
+            ASearchingAlgorithm searcher = null;
+            switch (solver) {
+                case "BFS" -> searcher = new BreadthFirstSearch();
+                case "DFS" -> searcher = new DepthFirstSearch();
+                case "BEST" -> searcher = new BestFirstSearch();
+            }
             SearchableMaze searchableMaze = new SearchableMaze(fromClientMaze);
 
-            Solution solution = bfs.solve(searchableMaze);
+            assert searcher != null; // searcher must not be null.
+            Solution solution = searcher.solve(searchableMaze);
             toSaveSolution.writeObject(solution); // write solution in new file
             toSaveSolution.flush();
 

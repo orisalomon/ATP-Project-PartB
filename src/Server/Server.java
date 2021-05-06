@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
+import java.util.Properties;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -22,7 +23,8 @@ public class Server {
         this.strategy = strategy;
         this.port = port;
         this.listeningIntervalMS = listeningIntervalMS;
-        this.threadPool = Executors.newFixedThreadPool(4 /* reading from config */); // only 2 threads working parallel. TODO: change the threads num from config file
+        Configurations conf = Configurations.getInstance();
+        this.threadPool = Executors.newFixedThreadPool(conf.getThreadPoolSize() /* reading from config */);
 
     }
 
@@ -37,7 +39,7 @@ public class Server {
             while (!stop) {
                 try {
                     Socket clientSocket = serverSocket.accept();
-                    threadPool.submit(()-> handleClient(clientSocket)); // TODO: change handleClient name??
+                    threadPool.submit(()-> handleClient(clientSocket));
                 }
                 catch (SocketTimeoutException e) {
                     e.printStackTrace();
