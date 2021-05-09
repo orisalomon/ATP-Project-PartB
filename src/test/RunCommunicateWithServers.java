@@ -76,7 +76,7 @@ public class RunCommunicateWithServers {
         } catch (UnknownHostException e) { e.printStackTrace();
         }
     }
-    private static void CommunicateWithServer_SolveSearchProblem() throws Exception {
+    private static void CommunicateWithServer_SolveSearchProblem() {
         try {
 
             Client client = new Client(InetAddress.getLocalHost(), 5401, new
@@ -98,7 +98,6 @@ public class RunCommunicateWithServers {
                                 toServer.flush();
                                 Solution mazeSolution = (Solution) fromServer.readObject(); //read generated maze (compressed with MyCompressor) from server
 
-                                System.out.println("SOLUTION--------------------------");
                                 //Print Maze Solution retrieved from the server
                                 System.out.println(String.format("Solution steps: %s", mazeSolution));
                                         ArrayList<AState> mazeSolutionSteps = mazeSolution.getSolutionPath();

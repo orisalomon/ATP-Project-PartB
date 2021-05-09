@@ -7,10 +7,10 @@ import java.io.*;
 
 public class ServerStrategyGenerateMaze implements IServerStrategy{
     @Override
-    public void applyStrategy(InputStream inFromClient, OutputStream outToClient) throws IOException {
-        ObjectInputStream fromClient = new ObjectInputStream(inFromClient);
-        ObjectOutputStream toClient = new ObjectOutputStream(outToClient);
+    public void ServerStrategy(InputStream inFromClient, OutputStream outToClient) {
         try {
+            ObjectInputStream fromClient = new ObjectInputStream(inFromClient);
+            ObjectOutputStream toClient = new ObjectOutputStream(outToClient);
             int[] fromClientArray = (int[]) fromClient.readObject();
             if(fromClientArray.length != 2){throw new Exception("Array length must be 2.");}
             Configurations conf = Configurations.getInstance();

@@ -16,15 +16,16 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
     static Semaphore mutex = new Semaphore(1);
 
     @Override
-    public void applyStrategy(InputStream inFromClient, OutputStream outToClient) throws IOException {
-        ObjectInputStream fromClient = new ObjectInputStream(inFromClient);
-        ObjectOutputStream toClient = new ObjectOutputStream(outToClient);
-
-
-        String tempDirectoryPath = System.getProperty("java.io.tmpdir"); // out to save
-
-        boolean foundSol = false;
+    public void ServerStrategy(InputStream inFromClient, OutputStream outToClient){
         try {
+            ObjectInputStream fromClient = new ObjectInputStream(inFromClient);
+            ObjectOutputStream toClient = new ObjectOutputStream(outToClient);
+
+
+            String tempDirectoryPath = System.getProperty("java.io.tmpdir"); // out to save
+
+            boolean foundSol = false;
+
             Maze fromClientMaze = (Maze)fromClient.readObject();
             if(fromClientMaze==null){throw new Exception("Input must not be null");}
 
@@ -34,9 +35,9 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
             AtomicInteger fileIndex = new AtomicInteger(0);
             // Creates a new File instance by converting the given pathname string
             // into an abstract pathname
-            System.out.println(Thread.currentThread().getName() + "is waiting to enter CS");
-            mutex.acquire();
-            System.out.println(Thread.currentThread().getName() + "entered CS");
+
+            mutex.acquire();  // enter the cs
+
 
             File f = new File(tempDirectoryPath);
 
@@ -64,8 +65,7 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
             }
 
             if(foundSol){
-                System.out.println(Thread.currentThread().getName() + "is exit the CS");
-                mutex.release();
+                mutex.release();  // if found, exit cs.
                 return;} // if found solution, we finished.
             fileIndex.getAndIncrement();
 
@@ -76,8 +76,7 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
             toSaveMaze.writeObject(fromClientMaze); // write maze in new file
             toSaveMaze.flush();
 
-            System.out.println(Thread.currentThread().getName() + "is exit the CS");
-            mutex.release();
+            mutex.release(); // exit the cs
             Configurations conf = Configurations.getInstance();
             String solver = conf.getSolverAlgorithm();
             ASearchingAlgorithm searcher = null;

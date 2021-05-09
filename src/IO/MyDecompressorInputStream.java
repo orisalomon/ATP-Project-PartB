@@ -14,12 +14,18 @@ public class MyDecompressorInputStream extends InputStream  implements Serializa
     }
 
     @Override
-    public int read() throws IOException {
-        return in.read();
+    public int read(){
+        int read = 0;
+        try {
+            read = in.read();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return read;
     }
 
     @Override
-    public int read(byte[] readTo) throws IOException {
+    public int read(byte[] readTo){
         int i;
         int totalRead = 0;
 

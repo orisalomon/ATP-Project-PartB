@@ -1,12 +1,10 @@
 package Server;
 
 
-import Server.IServerStrategy;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
-import java.util.Properties;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -54,7 +52,7 @@ public class Server {
 
     private void handleClient(Socket clientSocket) {
         try {
-            strategy.applyStrategy(clientSocket.getInputStream(), clientSocket.getOutputStream());
+            strategy.ServerStrategy(clientSocket.getInputStream(), clientSocket.getOutputStream());
             clientSocket.close(); // TODO: check if close client socket is needed.
         }
         catch (IOException e) {e.printStackTrace();}

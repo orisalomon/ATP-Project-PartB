@@ -1,6 +1,5 @@
 package Server;
 
-import algorithms.mazeGenerators.EmptyMazeGenerator;
 
 import java.io.FileInputStream;
 import java.io.InputStream;

@@ -11,12 +11,17 @@ public class SimpleDecompressorInputStream extends InputStream {
     }
 
     @Override
-    public int read() throws IOException {
-        return in.read();
+    public int read(){
+        int read = 0;
+        try {
+            read = in.read();
+        }
+        catch (Exception e){e.printStackTrace();}
+        return read;
     }
 
     @Override
-    public int read(byte[] readTo) throws IOException {
+    public int read(byte[] readTo) {
         int i;
         int totalRead = 0;
         boolean isZero = true;

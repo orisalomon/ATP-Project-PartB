@@ -11,12 +11,15 @@ public class SimpleCompressorOutputStream extends OutputStream {
     }
 
     @Override
-    public void write(int b) throws IOException {
-        out.write((byte)b);
+    public void write(int b){
+        try {
+            out.write((byte) b);
+        }catch (Exception e){e.printStackTrace();}
+
     }
 
     @Override
-    public void write(byte[] b) throws IOException {
+    public void write(byte[] b){
         int i;// current index in b.
 
         for(i=0;i<24;i++){

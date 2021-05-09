@@ -8,17 +8,17 @@ import java.io.*;
 import java.util.Arrays;
 
 public class RunCompressDecompressMaze {
-    public static void main(String[] args) throws Exception { String mazeFileName = "savedMaze.maze";
+    public static void main(String[] args){ String mazeFileName = "savedMaze.maze";
         AMazeGenerator mazeGenerator = new MyMazeGenerator();
-        Maze maze = mazeGenerator.generate(101, 101); //Generate new maze
-        maze.print();
+        Maze maze = null;
         try {
+            maze = mazeGenerator.generate(100, 100); //Generate new maze  // TODO: HOW TO HANDLE?? WITH TRY CATCH
 // save maze to a file
             OutputStream out = new MyCompressorOutputStream(new FileOutputStream(mazeFileName));
             out.write(maze.toByteArray());
             out.flush();
             out.close();
-        } catch (IOException e) { e.printStackTrace();
+        } catch (Exception e) { e.printStackTrace();
         }
         byte savedMazeBytes[] = new byte[0]; try {
 //read maze from file
@@ -28,12 +28,14 @@ public class RunCompressDecompressMaze {
             in.close();
         } catch (IOException e) { e.printStackTrace();
         }
-        Maze loadedMaze = new Maze(savedMazeBytes);
-        System.out.println();
-        loadedMaze.print();
-        boolean areMazesEquals = Arrays.equals(loadedMaze.toByteArray(),maze.toByteArray());
-        System.out.println(String.format("Mazes equal: %s",areMazesEquals));
+        try {
+            Maze loadedMaze = new Maze(savedMazeBytes); // TODO: HOW TO HANDLE?? WITH TRY CATCH
+            boolean areMazesEquals = Arrays.equals(loadedMaze.toByteArray(), maze.toByteArray());
+            System.out.println(String.format("Mazes equal: %s", areMazesEquals));
 //maze should be equal to loadedMaze
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
 
