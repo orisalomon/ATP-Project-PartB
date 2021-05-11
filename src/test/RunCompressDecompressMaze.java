@@ -8,34 +8,27 @@ import java.io.*;
 import java.util.Arrays;
 
 public class RunCompressDecompressMaze {
-    public static void main(String[] args){ String mazeFileName = "savedMaze.maze";
+    public static void main(String[] args) throws Exception { String mazeFileName = "savedMaze.maze";
         AMazeGenerator mazeGenerator = new MyMazeGenerator();
-        Maze maze = null;
+        Maze maze = mazeGenerator.generate(100, 100); //Generate new maze
         try {
-            maze = mazeGenerator.generate(100, 100); //Generate new maze  // TODO: HOW TO HANDLE?? WITH TRY CATCH
 // save maze to a file
             OutputStream out = new MyCompressorOutputStream(new FileOutputStream(mazeFileName));
-            out.write(maze.toByteArray());
-            out.flush();
+            out.write(maze.toByteArray()); out.flush();
             out.close();
-        } catch (Exception e) { e.printStackTrace();
+        } catch (IOException e) { e.printStackTrace();
         }
         byte savedMazeBytes[] = new byte[0]; try {
 //read maze from file
-            InputStream in = new MyDecompressorInputStream(new FileInputStream(mazeFileName));
-            savedMazeBytes = new byte[maze.toByteArray().length];
-            in.read(savedMazeBytes);
+            InputStream in = new MyDecompressorInputStream(new
+                    FileInputStream(mazeFileName));
+            savedMazeBytes = new byte[maze.toByteArray().length]; in.read(savedMazeBytes);
             in.close();
         } catch (IOException e) { e.printStackTrace();
         }
-        try {
-            Maze loadedMaze = new Maze(savedMazeBytes); // TODO: HOW TO HANDLE?? WITH TRY CATCH
-            boolean areMazesEquals = Arrays.equals(loadedMaze.toByteArray(), maze.toByteArray());
-            System.out.println(String.format("Mazes equal: %s", areMazesEquals));
+        Maze loadedMaze = new Maze(savedMazeBytes);
+        boolean areMazesEquals = Arrays.equals(loadedMaze.toByteArray(),maze.toByteArray());
+        System.out.println(String.format("Mazes equal: %s",areMazesEquals));
 //maze should be equal to loadedMaze
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 }
-

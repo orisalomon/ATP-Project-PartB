@@ -14,7 +14,8 @@ public class Configurations {
         // classes from instancing it
         InputStream input = null;
         try {
-            input = new FileInputStream("./resources/config.properties");
+            input = getClass().getResourceAsStream("/config.properties");
+
             prop.load(input);
         }
 

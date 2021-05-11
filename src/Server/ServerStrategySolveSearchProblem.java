@@ -1,12 +1,7 @@
 package Server;
 
-import IO.MyCompressorOutputStream;
-import algorithms.mazeGenerators.EmptyMazeGenerator;
 import algorithms.mazeGenerators.Maze;
-import algorithms.mazeGenerators.MyMazeGenerator;
-import algorithms.mazeGenerators.SimpleMazeGenerator;
 import algorithms.search.*;
-
 import java.io.*;
 import java.util.Arrays;
 import java.util.concurrent.Semaphore;
@@ -51,11 +46,13 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
                     fileIndex = new AtomicInteger(Math.max(fileIndex.get(),new AtomicInteger(Integer.parseInt(pathname.substring(pathname.indexOf("(")+1,pathname.indexOf(")")))).get()));
                     ObjectInputStream fromSavedMazes = new ObjectInputStream(new FileInputStream(tempDirectoryPath+"\\"+pathname));
                     Maze savedMaze = (Maze) fromSavedMazes.readObject();
+                    fromSavedMazes.close(); // close stream
                     if(Arrays.equals(savedMaze.toByteArray(), fromClientMaze.toByteArray())){
                         // if found maze in files, return its solution to the client without solving again.
                         ObjectInputStream savedSol = new ObjectInputStream(new FileInputStream(tempDirectoryPath+"\\"+solName+"("+fileIndex+")"+".solution"));
-                        Thread.sleep(100); // TODO: check why its work with sleep and not without
+                        Thread.sleep(100);
                         Solution sol = (Solution) savedSol.readObject();
+                        savedSol.close(); // close stream
                         toClient.writeObject(sol);
                         toClient.flush();
                         foundSol = true;
@@ -75,6 +72,8 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
             ObjectOutputStream toSaveSolution = new ObjectOutputStream(new FileOutputStream(tempDirectoryPath+"\\"+solName+"("+fileIndex+")"+".solution"));
             toSaveMaze.writeObject(fromClientMaze); // write maze in new file
             toSaveMaze.flush();
+            toSaveMaze.close(); // close stream
+
 
             mutex.release(); // exit the cs
             Configurations conf = Configurations.getInstance();
@@ -91,6 +90,7 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
             Solution solution = searcher.solve(searchableMaze);
             toSaveSolution.writeObject(solution); // write solution in new file
             toSaveSolution.flush();
+            toSaveSolution.close(); // close stream
 
             toClient.writeObject(solution);
             toClient.flush();

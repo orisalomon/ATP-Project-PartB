@@ -40,7 +40,7 @@ public class Server {
                     threadPool.submit(()-> handleClient(clientSocket));
                 }
                 catch (SocketTimeoutException e) {
-                    e.printStackTrace();
+                    // do nothing - catch with LOG later
                 }
 
             }
@@ -53,7 +53,7 @@ public class Server {
     private void handleClient(Socket clientSocket) {
         try {
             strategy.ServerStrategy(clientSocket.getInputStream(), clientSocket.getOutputStream());
-            clientSocket.close(); // TODO: check if close client socket is needed.
+            clientSocket.close();
         }
         catch (IOException e) {e.printStackTrace();}
     }
