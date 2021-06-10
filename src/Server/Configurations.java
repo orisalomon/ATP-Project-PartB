@@ -2,6 +2,7 @@ package Server;
 
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.Properties;
 
@@ -39,34 +40,38 @@ public class Configurations {
 
     public int getThreadPoolSize() {
         // get initial threads num
-        int threadNum = Integer.parseInt(instance.prop.getProperty("threadPoolSize"));
-        return threadNum;
+        return Integer.parseInt(prop.getProperty("threadPoolSize"));
     }
 
     public String getGenAlgorithm() throws Exception {
         // get initial generating algorithm
-        return instance.prop.getProperty("mazeGeneratingAlgorithm");
+        return prop.getProperty("mazeGeneratingAlgorithm");
     }
 
     public String getSolverAlgorithm() throws Exception {
         // get initial generating algorithm
-        return instance.prop.getProperty("mazeSearchingAlgorithm");
+        return prop.getProperty("mazeSearchingAlgorithm");
     }
 
     public void setThreadPoolSize(int size) throws Exception {
         if (size < 1){throw new Exception("Thread pool size must be equal or greater than 1!");}
+        FileOutputStream out = new FileOutputStream("config.properties");
         // set initial threads num
-        instance.prop.setProperty("threadPoolSize",Integer.toString(size));
+        prop.setProperty("threadPoolSize",Integer.toString(size));
+        prop.store(out,null);
+        out.close();
     }
 
     public void setGenAlgorithm(String generator) throws Exception {
         // set initial generating algorithm
 
         if(generator.equals("My") || generator.equals("Empty") || generator.equals("Simple")){
-            instance.prop.setProperty("mazeGeneratingAlgorithm",generator);
+            FileOutputStream out = new FileOutputStream("config.properties");
+            prop.setProperty("mazeGeneratingAlgorithm",generator);
+            prop.store(out,null);
+            out.close();
         }
         else{throw new Exception("Not valid generator algorithm.");}
-
 
     }
 
@@ -74,7 +79,10 @@ public class Configurations {
         // set initial generating algorithm
 
         if(solver.equals("BFS") || solver.equals("DFS") || solver.equals("BEST")){
-            instance.prop.setProperty("mazeSearchingAlgorithm",solver);
+            FileOutputStream out = new FileOutputStream("config.properties");
+            prop.setProperty("mazeSearchingAlgorithm",solver);
+            prop.store(out,null);
+            out.close();
         }
         else{throw new Exception("Not valid solver algorithm.");}
     }

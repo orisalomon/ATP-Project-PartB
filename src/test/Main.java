@@ -192,6 +192,7 @@ public class Main {
                 mazeGeneratingServer.stop();
                 solveSearchProblemServer.stop();
             } catch (Exception e) {
+                e.printStackTrace();
                 appendToResultsFile(String.valueOf("[TCWS_E]"));
             }
         }
@@ -208,16 +209,16 @@ public class Main {
                     try {
                         total_test++;
                         int size = (int) (50 * (i));
-                        System.out.println(size);
+                        // System.out.println(size);
                         ObjectOutputStream toServer = new ObjectOutputStream(outToServer);
-                        ObjectInputStream fromServer = new ObjectInputStream(inFromServer);
                         toServer.flush();
                         int[] mazeDimensions = new int[]{size, size};
                         toServer.writeObject(mazeDimensions); //send maze dimensions to server
                         toServer.flush();
+                        ObjectInputStream fromServer = new ObjectInputStream(inFromServer);
                         byte[] compressedMaze = (byte[]) fromServer.readObject(); //read generated maze (compressed with MyCompressor) from server
                         InputStream is = new MyDecompressorInputStream(new ByteArrayInputStream(compressedMaze));
-                        byte[] decompressedMaze = new byte[1000000 /*CHANGE SIZE ACCORDING TO YOU MAZE SIZE*/]; //allocating byte[] for the decompressed maze -
+                        byte[] decompressedMaze = new byte[1000000000 /*CHANGE SIZE ACCORDING TO YOU MAZE SIZE*/]; //allocating byte[] for the decompressed maze -
                         is.read(decompressedMaze); //Fill decompressedMaze with bytes
                         // System.out.println("Dec");
                         Maze maze = new Maze(decompressedMaze);
@@ -250,13 +251,14 @@ public class Main {
                         total_test++;
                         int size = (int) (50 * (i+1));
                         ObjectOutputStream toServer = new ObjectOutputStream(outToServer);
-                        ObjectInputStream fromServer = new ObjectInputStream(inFromServer);
                         toServer.flush();
+
                         MyMazeGenerator mg = new MyMazeGenerator();
 
                         Maze maze = mg.generate(size, size);
                         toServer.writeObject(maze); //send maze to server
                         toServer.flush();
+                        ObjectInputStream fromServer = new ObjectInputStream(inFromServer);
                         Solution mazeSolution = (Solution) fromServer.readObject(); //read generated maze (compressed with MyCompressor) from server
 
                         //Print Maze Solution retrieved from the server
@@ -268,9 +270,11 @@ public class Main {
                         {
                             appendToResultsFile("[CS_EM]");
 
+
                         }
                     } catch (Exception e) {
                         appendToResultsFile("[CS_E]");
+                        appendToResultsFile(e.getMessage());
 
                     }
                 }

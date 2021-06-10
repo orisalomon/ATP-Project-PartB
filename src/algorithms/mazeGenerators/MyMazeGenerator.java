@@ -27,7 +27,7 @@ public class MyMazeGenerator extends AMazeGenerator {
 
         for (int i = 0; i<rows; i++){
             for (int j = 0; j<cols; j++){
-                if (start.toString().equals(i + "," + j)) {
+                if (start.toString().equals("{"+i + "," + j + "}")) {
                     maze.maze[i][j] = 0;
                 } else {
                     maze.maze[i][j] = 1;
